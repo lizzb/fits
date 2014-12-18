@@ -34,10 +34,11 @@ Polyonimo.prototype.displayInfo = function () {
 
 
 // -----------------------------------------------------------
-// ROTATE LEFT
-// current heading - 1 (counterclockwise)
+// ROTATE LEFT (counterclockwise)
+// current heading - 1
 // N <-- E <-- S <-- W <-- N ...
 // rN <-- rE <-- rS <-- rW <-- rN ...
+// -----------------------------------------------------------
 Polyonimo.prototype.rotateLeft = function () {
 
 
@@ -75,35 +76,39 @@ Polyonimo.prototype.rotateLeft = function () {
   var debug = orientations[oldIndex] + "("+ oldIndex + ") --> rotate LEFT --> " + orientations[this.orientationIdx] + "(" + this.orientationIdx + ")";
   console.log(debug);
   
-  //............... is this right??
+
+  //............... is this right??..............
   this.draw();
   //drawPiece();
 };
 
+
+
+// -----------------------------------------------------------
+// ROTATE RIGHT (clockwise)
+// current heading + 1
+// N --> E --> S --> W --> N ...
+// rN --> rE --> rS --> rW --> rN ...
+// -----------------------------------------------------------
 Polyonimo.prototype.rotateRight = function () {
-/*
-   var str1 = "old orientation index: " + currentOrientationIndex + " " +  orientations[currentOrientationIndex];
+
+  // *** DEBUG *** //
+  var oldIndex = this.orientationIdx;
+
+  this.orientationIdx = (this.orientationIdx + 1) % 4; 
   
-  // current heading + 1
-  // N --> E --> S --> W --> N ...
-  // rN --> rE --> rS --> rW --> rN ...
+  if(oldIndex >= 4) this.orientationIdx+=4; // rN rE rS rW need adjustment, NESW dont
   
-  // NESW
-  if(currentOrientationIndex <=3)
-      currentOrientationIndex = (currentOrientationIndex + 1) % 4;
-    
-  // rN rE rS rW
-  else
-    currentOrientationIndex = 4 + (currentOrientationIndex + 1) % 4;
+// http://davidwalsh.name/multiline-javascript-strings
+  var debug = orientations[oldIndex] + "("+ oldIndex + ") \
+              --> rotate LEFT --> " +
+              orientations[this.orientationIdx] + "(" + this.orientationIdx + ")";
+  console.log(debug);
   
-  var str2 = "new orientation index: " + currentOrientationIndex + " " +  orientations[currentOrientationIndex];
-  
-  console.log(str1);
-  console.log(str2);
-  
-  //...........
-  drawPiece();
-  */
+
+  //............... is this right??..............
+  this.draw();
+  //drawPiece();
 };
 
 Polyonimo.prototype.flipVertical = function () {
@@ -228,6 +233,77 @@ exP.parentNode .replaceChild(newP,exP);
   
 }
 
+
+//createPentomino('x5')
+
+function createPentomino(pieceName) {
+
+  // rowlabels are only specific to the ids for the PIECES not the board!
+  // the board is 6 wide (goes to f), not 5
+  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
+
+  //var pieceName = currentPieceName;
+  var currentOrientationIndex = 0;
+  var pieceOrientation = orientations[currentOrientationIndex]; 
+  
+  var defaultPieceInfo = emptyPiece;
+  var pieceLayout = North; // array of 25 indices, order to read the info
+  
+  switch (pieceName) {
+  case "v3": defaultPieceInfo = v3; break;
+  case "v5": defaultPieceInfo = v5; break;
+  case "l4": defaultPieceInfo = l4; break;
+  case "l5": defaultPieceInfo = l5; break;
+  case "z4": defaultPieceInfo = z4; break;
+  case "z5": defaultPieceInfo = z5; break;
+  case "t4": defaultPieceInfo = t4; break;
+  case "t5": defaultPieceInfo = t5; break;
+  case "x5": defaultPieceInfo = x5; break;
+  case "y5": defaultPieceInfo = y5; break;
+  case "w5": defaultPieceInfo = w5; break;
+  case "f5": defaultPieceInfo = f5; break;
+  case "p5": defaultPieceInfo = p5; break;
+  case "o4": defaultPieceInfo = o4; break;
+      
+  case "n5": defaultPieceInfo = n5; break;
+  case "i5": defaultPieceInfo = i5; break;
+  case "i4": defaultPieceInfo = i4; break;
+  case "i3": defaultPieceInfo = i3; break;
+  case "i2": defaultPieceInfo = i2; break;
+  case "i1": defaultPieceInfo = i1; break;
+  default: break;
+}
+  
+  // little janky, turns index of orientation into number back into actual layout (25 indices rearranged to read in order to match orientation)
+    switch (pieceOrientation) {
+  case "N": pieceLayout = North; break;
+  case "E": pieceLayout = East; break;
+  case "S": pieceLayout = South; break;
+  case "W": pieceLayout = West; break;
+  case "rN": pieceLayout = rNorth; break;
+  case "rE": pieceLayout = rEast; break;
+  case "rS": pieceLayout = rSouth; break;
+  case "rW": pieceLayout = rWest; break;
+  default: break;
+}
+
+
+  var pieceDiv = document.createElement("DIV");
+  pieceDiv.className = "piece";
+  for (var i=0; i<25; i++) { 
+    var unit = document.createElement("DIV");
+      unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
+      unit.appendChild(document.createTextNode(unit.id)); //...........
+
+    if(defaultPieceInfo[pieceLayout[i]])
+      unit.className = "filled";
+    pieceDiv.appendChild(unit);
+    if ((i+1) % 5 === 0)
+      pieceDiv.appendChild(document.createElement("BR"));
+  }
+  pieceDiv.appendChild(document.createElement("BR"));
+  document.getElementById("game-pieces").appendChild(pieceDiv);
+}
 
 
 
