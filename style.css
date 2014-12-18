@@ -1,0 +1,191 @@
+
+body {font-family: Helvetica, sans-serif;}
+.button {
+  color: #ffffff;
+  font-size: 12px;
+  background: #2a83bf;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+  margin: 1px;
+}
+
+.button:hover {
+  background: #41b3fa;
+  text-decoration: none;
+}
+
+.button strong {font-size: 24px; vertical-align: middle;}
+
+/*
+.btn {
+  text-shadow: 1px 1px 3px #13e800;
+  -webkit-box-shadow: 1px 1px 1px #f518d4;
+  -moz-box-shadow: 1px 1px 1px #f518d4;
+  box-shadow: 1px 1px 1px #f518d4;
+  color: #ffffff;
+  font-size: 20px;
+  background: #2a83bf;
+  padding: 10px 10px 10px 10px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3aa0e0;
+  text-decoration: none;
+}
+*/
+
+
+
+
+/* ========== Player RED ========== */
+/*
+red:
+outer = rgb(255,85,97);
+  gradient inwards to rgb(255,171,134); or 255, 154, 138? 
+  more like 255, 177, 162
+  red pieces: rgb(247, 0, 0);
+  dots: rgb(255,82,69);
+*/
+
+
+/* ========== Player YELLOW ========== */
+/*
+yellow
+gradient
+outer: rgb(254, 189,60)
+inner rgb(248,224,120);
+piece: rgb(255,157,0);
+dot: rgb(254, 201, 57);
+*/
+
+
+/* ========== Player GREEN ========== */
+/*
+green
+outer: rgb(0, 178, 118)
+inner: rgb(90,197,140)
+dot: 0,164,94
+piece: 0 148 90
+*/
+
+
+/* ========== Player BLUE ========== */
+/*
+blue
+outer: rgb(0,139,224); or 0 120 172 or 0 125 205
+inner: rgb(7,190,236);
+dot: rgb(1, 136,199) 0, 133, 202
+piece: 0 127 212, or 2, 124, 220
+*/
+
+
+
+/* ========== Round 1 DOTS ========== */
+
+
+/* ----- Default Dot ----- */
+
+
+/* ========== Round 2 NUMBERS ========== */
+
+
+/* ========== Round 3 NUMBERS ========== */
+
+/* ----- white -5 in black circle ----- */
+
+
+/* ========== Round 4 SYMBOLS ========== */
+
+
+/* ----- Orange: Triangle ----- */
+
+/*
+orange -  BLACK UP-POINTING TRIANGLE &#x25B2; 
+orange: rgb(255, 131, 19);
+orange: rgb(255, 139, 35);
+*/
+
+
+/* ----- Blue: 6-Pointed Star ----- */
+
+/*
+bright blue -  SIX POINTED BLACK STAR &#x2736;
+blue: rgb(11, 191, 255);
+blue: rgb(37,193, 255);
+*/
+
+/* ----- Pink: Circle ----- */
+
+/*
+pink: rgb(255, 104, 168);
+pink: rgb(255, 113, 166);
+*/
+
+/* ----- Green: Square Diamond ----- */
+
+/*
+green - BLACK MEDIUM DIAMOND &#x2b25;
+lime: rgb(132, 186, 41);
+*/
+
+/* ----- Purple: Diagonal Cross ----- */
+
+/*
+purple -  HEAVY MULTIPLICATION X &#x2716; 
+purple: rgb(189, 86, 159);
+*/
+
+/*
+  BLACK DIAMOND &#x25C6; &#x25A0; 
+  BOX DRAWINGS LIGHT DIAGONAL CROSS &#x2573;
+  MULTIPLICATION X &#x2715; 
+  BLACK MEDIUM SQUARE &#x25FC;
+*/
+
+
+
+
+
+.piece { 
+  padding: 10px;
+  margin: 0px;
+  display: inline-block;
+  position: relative;
+}
+.piece div {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  position: relative;
+  padding: 0px;
+  margin: -1.5px;
+  
+  border: 1px solid black;
+  background-color: #efefef;
+}
+
+
+/*
+Using a formula (an + b). Description: a represents a cycle size, n is a counter (starts at 0), and b is an offset value.
+EXAMPLE: specify a background color for all p elements whose index is a multiple of 3:  3n + 0
+.piece div:nth-child(5) {}
+*/
+.piece div:nth-child(6n-1) {
+    background: #dddded;
+}
+
+/* or div .filled? this is funky does NOT WORK WITH .piece div:nth-child 
+okay and JUST .filled wasnt working but couldnt tell for longest time*/
+div:nth-child(6n-1) .filled,
+div .filled {
+  background-color: teal;
+}
+
+/*
+http://jsfiddle.net/marcuswhybrow/YMN7U/5/
+li:nth-child(4) { clear: left; }
+
+http://jsfiddle.net/dWkdp/
+li:nth-child(3):after { content:"\A"; white-space:pre; }
+*/
