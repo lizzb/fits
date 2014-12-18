@@ -36,7 +36,9 @@ var currentOrientationIndex = 0; //"N";
 var currentPieceName = "v3"; 
 
 //createPentomino('x5')
-
+//
+//
+//
 function createPentomino(pieceName) {
 
   // rowlabels are only specific to the ids for the PIECES not the board!
@@ -105,6 +107,15 @@ function createPentomino(pieceName) {
   }
   pieceDiv.appendChild(document.createElement("BR"));
   document.getElementById("game-pieces").appendChild(pieceDiv);
+
+document.getElementById("currentPiece").innerHTML = currentPieceName;
+document.getElementById("currentOrientationIndex").innerHTML = currentOrientationIndex;
+document.getElementById("currentOrientation").innerHTML = orientations[currentOrientationIndex]; 
+
+//  <li id="currentPiece"></li>
+//<li id="currentOrientationIndex"></li>
+//<li id="currentOrientation"></li>
+  
 }
 
 // -----------------------------------------------------------
@@ -226,6 +237,11 @@ function flipHorizontal() {
 <header>
 
 <h1 id="test"></h1>
+
+Hacky:
+<li id="currentPiece"></li>
+<li id="currentOrientationIndex"></li>
+<li id="currentOrientation"></li>
   
   
   <a class="button" onclick="rotateRight()"><strong>&#8635;</strong> Rotate Right CW </a>
