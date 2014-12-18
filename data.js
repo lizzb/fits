@@ -1,3 +1,4 @@
+// polyonimos
 var pieceNames = [
 "i1", "i2", "i3", "i4", "i5", 
 "o4", "f5", "n5", "p5", 

@@ -3,11 +3,15 @@
  //
  //
  // 
-function Pentomino(name, structure) {
+function Polyonimo(name, structure) {
   this.name = name;
   this.structure = structure;
-  this.orientationIdx = 0;
   this.isPlaced = false;
+
+  // can i use enums somehow....?
+  this.orientationIdx = 0; // current orientation index
+  
+
   this.numUnits = 0; // need to count from structure
   for(var i = 0; i<this.structure.length; i++) {
     if(this.structure[i]) this.numUnits++;
@@ -16,17 +20,78 @@ function Pentomino(name, structure) {
   
 }
 
-/*
+/* 
+// Alternate way - make function separately
 function displayPieceInfo() {
   return "Name: " + this.name + "\n Num Units: "+this.numUnits+ "\n Current Orientation: " + orientations[this.orientationIdx] + "\n Currently Placed?: " + this.isPlaced + "\n Default Structure: " + this.structure;
 }
-
 Pentomino.prototype.displayInfo = displayPieceInfo;
 */
 
-Pentomino.prototype.displayInfo = function () {
+Polyonimo.prototype.displayInfo = function () {
   return "Name: " + this.name + "\n Num Units: "+this.numUnits+ "\n Current Orientation: " + orientations[this.orientationIdx] + "\n Currently Placed?: " + this.isPlaced + "\n Default Structure: " + this.structure;
 };
+
+
+// -----------------------------------------------------------
+// ROTATE LEFT
+// current heading - 1 (counterclockwise)
+// N <-- E <-- S <-- W <-- N ...
+// rN <-- rE <-- rS <-- rW <-- rN ...
+Polyonimo.prototype.rotateLeft = function () {
+
+
+  // *** DEBUG *** //
+  //var oldstr = this.orientationIdx + " " +  orientations[this.orientationIdx];
+  var oldIndex = this.orientationIdx;
+
+  this.orientationIdx--;
+
+  if( (oldIndex < 4 && this.orientationIdx < 0) ||  // N E S W needs to loop around
+      (oldIndex >= 4 && this.orientationIdx < 4) )  // rN rE rS rW needs to loop around
+    this.orientationIdx+=4;
+
+/*
+  // NESW
+  if(this.orientationIdx < 4) //<=3
+    {
+      this.orientationIdx--;
+      if (this.orientationIdx < 0) this.orientationIdx = 3; // + 4
+    }
+      
+    
+  // rN rE rS rW
+  else
+    {
+      this.orientationIdx--;
+      if (this.orientationIdx < 4) this.orientationIdx = 7; // + 4 // orientations.length - 1;
+    }
+*/
+  
+  //var newstr = this.orientationIdx + " " +  orientations[this.orientationIdx];
+  //var str = "Orientation: " + oldstr + "(old)--> rotate left -->  new: " + newstr;
+  //console.log(str);
+
+  var debug = orientations[oldIndex] + "("+ oldIndex + ") --> rotate LEFT --> " + orientations[this.orientationIdx] + "(" + this.orientationIdx + ")";
+  console.log(debug);
+  
+  //...........
+  drawPiece();
+};
+
+Polyonimo.prototype.rotateRight = function () {
+  
+};
+
+Polyonimo.prototype.flipVertical = function () {
+  
+};
+
+Polyonimo.prototype.flipHorizontal = function () {
+  
+};
+
+
 
 
 
@@ -266,7 +331,7 @@ function isValidPlacement() {
 }
 
 
-
+/*
 // -----------------------------------------------------------
 // PIECE MANIPULATION FUNCTIONS
 //
@@ -412,24 +477,12 @@ function flipHorizontal() {
 
 
 
-Pentomino.prototype.rotateLeft = rotateLeft();
-Pentomino.prototype.rotateRight = rotateRight();
-Pentomino.prototype.flipVertical = flipVertical();
-Pentomino.prototype.flipHorizontal = flipHorizontal();
-/*
-Pentomino.prototype.rotateLeft = function () {
-  
-};
+Polyonimo.prototype.rotateLeft = rotateLeft();
+Polyonimo.prototype.rotateRight = rotateRight();
+Polyonimo.prototype.flipVertical = flipVertical();
+Polyonimo.prototype.flipHorizontal = flipHorizontal();
 
-Pentomino.prototype.rotateRight = function () {
-  
-};
-
-Pentomino.prototype.flipVertical = function () {
-  
-};
-
-Pentomino.prototype.flipHorizontal = function () {
-  
-};
 */
+
+
+

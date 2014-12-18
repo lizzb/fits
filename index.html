@@ -6,8 +6,27 @@
 <script src="data.js"></script>
 <script src="Pieces.js"></script>
 <link rel="stylesheet" href="style.css">
-<style>
-</style>
+
+<script>
+
+window.addEventListener('load', function(e) {
+  document.querySelector('#test').innerHTML = 'fitris';
+
+  /*for (var i = Things.length - 1; i >= 0; i--) {
+    Things[i]
+  };
+}, false);*/
+
+var pieces = document.querySelector('#game-pieces');
+pieces.innerHTML += "";
+
+for (var i = 0; i < pieceNames.length; i++) {
+  //polyonimos[i]
+}
+});
+
+</script>
+
 
 </head>
 
@@ -25,6 +44,8 @@
 </header>
 
 <section>
+
+<div id="game-pieces"></div>
 
 
   
@@ -74,16 +95,7 @@
 
 
 		
-    <script>
 
-window.addEventListener('load', function(e) {
-  document.querySelector('#test').innerHTML = 'fitris';
-}, false);
-
- 
-
-
-    </script>
 <!--&#9633;
   &#11036;
 
