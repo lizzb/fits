@@ -10,25 +10,8 @@
     <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <style>
-
-    .btn {
-display: block;
-padding: 2px 1px;
-border: 2px solid #4F8EF7;
-border-radius: 4px;
-background-color: #4F8EF7;
-color: white;
-/*opacity: 0.7;
-transition: opacity 0.1s ease-in-out 0s;
-width: 196px;
-font: normal normal bold normal 12px/13px 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
-}
-
-.btn strong {
-	font-size: 26px;
-}
-</style>
+    <script src="javascripts/mine.js"></script>
+    <link rel="stylesheet" href="stylesheets/mine.css">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -54,34 +37,211 @@ font: normal normal bold normal 12px/13px 'Helvetica Neue', Helvetica, Arial, sa
           <strong>v5</strong></a>
           </li-->
 
-          <li><a class="btn" onclick=""><strong>↻ ↷</strong>Rotate Right</a></li>
-          <li><a class="btn" onclick=""><strong>↺ ↶</strong>Rotate Left</a></li>
-          <li><a class="btn" onclick=""><strong>↕</strong>Flip Vertical</a></li>
-          <li><a class="btn" onclick=""><strong>↔</strong>Flip Horizontal</a></li>
+          <li><a class="action-btn" onclick=""><strong>↻ ↷</strong>Rotate Right</a></li>
+          <li><a class="action-btn" onclick=""><strong>↺ ↶</strong>Rotate Left</a></li>
+          <li><a class="action-btn" onclick=""><strong>↕</strong>Flip Vertical</a></li>
+          <li><a class="action-btn" onclick=""><strong>↔</strong>Flip Horizontal</a></li>
 
           
 
         </ul>
       </header>
+
+<section>
+<html>
+<h1 id="test"></h1>
+  &#9633;
+  &#11036;
+  
+<pre>
+  []  
+  []  
+  []  
+</pre>
+  
+<pre>
+[][]  
+  []  
+  [][]
+</pre>
+  
+<pre>
+[][][]  
+  []  
+  []  
+</pre>
+  
+<pre>   
+[][][]
+  []  
+</pre>
+  
+<pre>   
+[][]  
+  [][]  
+</pre>
+  
+  <!--button onclick="createPentomino()">
+    Make pentomino 
+  </button-->
+  
+  <!--button onclick="makreeV5()">
+    Make pentomino v5
+  </button>
+    <button onclick="makeV3()">
+      Make pentomino v3
+  </button>
+  <button onclick="makeL4()">
+    Make pentomino l4
+  </button>
+  <button onclick="makeL5()">
+    Make pentomino l5
+  </button-->
+  <button onclick="rotateRight()"> Rotate Right CW </button>
+  <button onclick="rotateLeft()"> Rotate Left CCW </button>
+  <button onclick="flipVertical()"> Flip Vertical </button>
+  <button onclick="flipHorizontal()"> Flip Horizontal </button>
+  <br><br>
+  
+    <button onclick="createDynamicPentomino('f5')"> Make dynamic f </button>
+  <button onclick="createDynamicPentomino('p5')"> Make dynamic p </button>
+  <button onclick="createDynamicPentomino('o4')"> Make dynamic o </button>
+  
+  <br><br>  
+  
+  
+  <div id="dynamic-pentomino"></div>
+  
+  <hr>
+  
+    <button onclick="createPentomino('v5')">
+    Make pentomino v5
+  </button>
+    <button onclick="createPentomino('v3')">
+      Make pentomino v3
+  </button>
+  <button onclick="createPentomino('l4')">
+    Make pentomino l4
+  </button>
+  <button onclick="createPentomino('l5')">
+    Make pentomino l5
+  </button>
+  
+  <button onclick="createPentomino('z4')"> Make z4 </button>
+  
+    <button onclick="createPentomino('z5')"> Make z5 </button>
+  
+      <button onclick="createPentomino('t4')"> Make t4 </button>
+  
+  <button onclick="createPentomino('t5')"> Make t5 </button>
+  
+  <button onclick="createPentomino('x5')"> Make x </button>
+  
+    <button onclick="createPentomino('y5')"> Make y </button>
+  
+  <button onclick="createPentomino('w5')"> Make w </button>
+  
+
+  
+  <button onclick="createPentomino('f5')"> Make f </button>
+  <button onclick="createPentomino('p5')"> Make p </button>
+  <button onclick="createPentomino('o4')"> Make o </button>
+  
+  <br><br>
+  
+  <div id="pentomino"></div>
+  
+  <!--div class="piece">
+    <div id="a1" class=""></div>
+    <div id="a2" class=""></div>
+    <div id="a3" class=""></div>
+    <div id="a4" class=""></div>
+    <div id="a5" class=""></div>
+    <br>
+    <div id="b1" class=""></div>
+    <div id="b2" class=""></div>
+    <div id="b3" class=""></div>
+    <div id="b4" class=""></div>
+    <div id="b5" class=""></div>
+    <br>
+    <div id="c1" class=""></div>
+    <div id="c2" class=""></div>
+    <div id="c3" class="filled"></div>
+    <div id="c4" class=""></div>
+    <div id="c5" class=""></div>
+    <br>
+    <div id="d1" class=""></div>
+    <div id="d2" class=""></div>
+    <div id="d3" class=""></div>
+    <div id="d4" class=""></div>
+    <div id="d5" class=""></div>
+    <br>
+    <div id="e1" class=""></div>
+    <div id="e2" class=""></div>
+    <div id="e3" class=""></div>
+    <div id="e4" class=""></div>
+    <div id="e5" class=""></div>
+  </div-->
+  
+  
+</html>
+
+</section>
+
+
       <section>
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
+		<a class="btn" onclick="">o4</a>
+		<a class="btn" onclick="">f5</a>
+		<a class="btn" onclick="">p5</a>
+		<a class="btn" onclick="">y5</a>
+		<a class="btn" onclick="">x5</a>
+		<a class="btn" onclick="">w5</a>
+		<a class="btn" onclick="">n5</a>
+          <a class="btn" onclick="">v3</a>
+          <a class="btn" onclick="">v5</a>
+          <a class="btn" onclick="">z4</a>
+          <a class="btn" onclick="">z5</a>
+          <a class="btn" onclick="">t4</a>
+          <a class="btn" onclick="">t5</a>
+          <a class="btn" onclick="">l4</a>
+          <a class="btn" onclick="">l5</a>
+          <a class="btn" onclick="">i1</a>
+          <a class="btn" onclick="">i2</a>
+          <a class="btn" onclick="">i3</a>
+          <a class="btn" onclick="">i4</a>
+          <a class="btn" onclick="">i5</a>
 
 
-          <li><a onclick="">3 units <strong>v3</strong></a></li>
-          <li><a onclick="">5 units <strong>v5</strong></a></li>
-          <li><a onclick="">4 units <strong>z4</strong></a></li>
-          <li><a onclick="">5 units <strong>z5</strong></a></li>
-          <li><a onclick="">4 units <strong>t4</strong></a></li>
-          <li><a onclick="">5 units <strong>t5</strong></a></li>
-          <li><a onclick="">4 units <strong>l4</strong></a></li>
-          <li><a onclick="">5 units <strong>l5</strong></a></li>
-          <li><a onclick="">1 unit  <strong>i1</strong></a></li>
-          <li><a onclick="">2 units <strong>i2</strong></a></li>
-          <li><a onclick="">3 units <strong>i3</strong></a></li>
-          <li><a onclick="">4 units <strong>i4</strong></a></li>
-          <li><a onclick="">5 units <strong>i5</strong></a></li>
+<pre class="text-piece">
+  []  
+  []  
+  []  
+</pre>
+  
+<pre class="text-piece">
+[][]  
+  []  
+  [][]
+</pre>
+  
+<pre class="text-piece">
+[][][]  
+  []  
+  []  
+</pre>
+  
+<pre class="text-piece">   
+[][][]
+  []  
+</pre>
+  
+<pre class="text-piece">   
+[][]  
+  [][]  
+</pre>
 
 
 <p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
@@ -90,6 +250,10 @@ font: normal normal bold normal 12px/13px 'Helvetica Neue', Helvetica, Arial, sa
 $ git fetch origin
 $ git checkout gh-pages
 </code></pre>
+
+
+
+
 
 <p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
 
