@@ -26,7 +26,14 @@ for (var i = 0; i < pieceNames.length; i++) {
 });
 
 
+
+
+// ---------------------------------------------
 // STILL USING THIS, NOT YET ON PROTOTYPES
+
+var currentOrientationIndex = 0; //"N";
+//var currentOrientation = orientations[currentOrientationIndex]; 
+var currentPieceName = "v3"; 
 
 //createPentomino('x5')
 
@@ -36,8 +43,9 @@ function createPentomino(pieceName) {
   // the board is 6 wide (goes to f), not 5
   var rowLabels = ['a', 'b', 'c', 'd', 'e'];
 
+  currentPieceName = pieceName;
   //var pieceName = currentPieceName;
-  var currentOrientationIndex = 0;
+  //var currentOrientationIndex = 0;
   var pieceOrientation = orientations[currentOrientationIndex]; 
   
   var defaultPieceInfo = emptyPiece;
@@ -99,6 +107,115 @@ function createPentomino(pieceName) {
   document.getElementById("game-pieces").appendChild(pieceDiv);
 }
 
+// -----------------------------------------------------------
+// ROTATE LEFT (counterclockwise)
+// -----------------------------------------------------------
+function rotateLeft() {
+  var oldIndex = currentOrientationIndex; //this.orientationIdx;
+  currentOrientationIndex--; //this.orientationIdx--;
+
+  if( (oldIndex < 4 && currentOrientationIndex < 0) || (oldIndex >= 4 && currentOrientationIndex < 4) )
+    currentOrientationIndex+=4;
+
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> rotate LEFT --> " + 
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  
+  // REDRAW MOST RECENTLY SELECTED PIECE
+  createPentomino(currentPieceName);
+}
+
+
+// -----------------------------------------------------------
+// ROTATE RIGHT (clockwise)
+// -----------------------------------------------------------
+function rotateRight() {
+  var oldIndex = currentOrientationIndex; //this.orientationIdx;
+  currentOrientationIndex = ( currentOrientationIndex + 1 ) % 4;
+  //this.orientationIdx = (this.orientationIdx + 1) % 4; 
+  
+  if(oldIndex >= 4) currentOrientationIndex+=4; // rN rE rS rW need adjustment, NESW dont
+  
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> rotate RIGHT --> " +
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  
+  // REDRAW MOST RECENTLY SELECTED PIECE
+  createPentomino(currentPieceName);
+}
+
+
+
+
+//
+// 1 --> 7, 7 --> 1, 3 --> 5, 5 --> 3
+// -----------------------------------------------------------
+// FLIP VERTICAL 
+// -----------------------------------------------------------
+function flipVertical() {
+  var oldIndex = currentOrientationIndex; //this.orientationIdx;
+  
+  // N <--> rN, S <--> rS
+  // E <--> rW, W <--> rE
+  //  N  E  S  W
+  //  ↕  ↕  ↕  ↕
+  // rN rW rS rE
+  
+  // N S rN rS (even indices)
+  if(currentOrientationIndex % 2 === 0)
+      currentOrientationIndex = (currentOrientationIndex + 4) % 8;
+    
+  // E rW W rE (odd indices)
+  else
+      currentOrientationIndex = 8 - currentOrientationIndex;
+  
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> flip VERTICAL --> " +
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  
+  // REDRAW MOST RECENTLY SELECTED PIECE
+  createPentomino(currentPieceName);
+}
+
+
+
+//
+// 0 --> 6, 6 --> 0, 2 --> 4, 4 --> 2
+//
+// -----------------------------------------------------------
+// FLIP HORIZONTAL 
+// -----------------------------------------------------------
+function flipHorizontal() {
+  var oldIndex = currentOrientationIndex; //this.orientationIdx;
+  
+  // N <--> rS, S <--> rN
+  // E <--> rE, W <--> rW
+  //  N  E  S  W
+  //  ↕  ↕  ↕  ↕
+  // rS rE rN rW
+  
+    // N S rN rS (even indices)
+  if(currentOrientationIndex % 2 === 0)
+      currentOrientationIndex = 6 - currentOrientationIndex;
+      
+    
+  // E rW W rE (odd indices)
+  else
+      currentOrientationIndex = (currentOrientationIndex + 4) % 8;
+  
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> flip HORIZONTAL --> " +
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  
+  // REDRAW MOST RECENTLY SELECTED PIECE
+  createPentomino(currentPieceName);
+}
+
+
 
 </script>
 
@@ -127,11 +244,11 @@ function createPentomino(pieceName) {
 
   <br><br>
   
-<button onclick="createDynamicPentomino('f5')"> Make dynamic f </button>
+<!--button onclick="createDynamicPentomino('f5')"> Make dynamic f </button>
 <button onclick="createDynamicPentomino('p5')"> Make dynamic p </button>
 <button onclick="createDynamicPentomino('o4')"> Make dynamic o </button>
   
-  <br><br>  
+  <br><br-->  
   
   
   <div id="dynamic-pentomino"></div>
