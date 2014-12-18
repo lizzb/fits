@@ -75,12 +75,35 @@ Polyonimo.prototype.rotateLeft = function () {
   var debug = orientations[oldIndex] + "("+ oldIndex + ") --> rotate LEFT --> " + orientations[this.orientationIdx] + "(" + this.orientationIdx + ")";
   console.log(debug);
   
-  //...........
-  drawPiece();
+  //............... is this right??
+  this.draw();
+  //drawPiece();
 };
 
 Polyonimo.prototype.rotateRight = function () {
+/*
+   var str1 = "old orientation index: " + currentOrientationIndex + " " +  orientations[currentOrientationIndex];
   
+  // current heading + 1
+  // N --> E --> S --> W --> N ...
+  // rN --> rE --> rS --> rW --> rN ...
+  
+  // NESW
+  if(currentOrientationIndex <=3)
+      currentOrientationIndex = (currentOrientationIndex + 1) % 4;
+    
+  // rN rE rS rW
+  else
+    currentOrientationIndex = 4 + (currentOrientationIndex + 1) % 4;
+  
+  var str2 = "new orientation index: " + currentOrientationIndex + " " +  orientations[currentOrientationIndex];
+  
+  console.log(str1);
+  console.log(str2);
+  
+  //...........
+  drawPiece();
+  */
 };
 
 Polyonimo.prototype.flipVertical = function () {
@@ -92,71 +115,26 @@ Polyonimo.prototype.flipHorizontal = function () {
 };
 
 
+// function createPentomino(pieceInfo) {
+//function createPentomino() {
+////function createPentomino(pieceName) {
 
+//// function createDynamicPentomino(pieceName) {
 
-
-
-
-
-
-
-
-
-function createDynamicPentomino(pieceName) {
-  
-  var pieceInfo = emptyPiece;
-  
-  currentPieceName = pieceName; // .......
-  
-  switch (pieceName) {
-  case "v3": pieceInfo = v3; break;
-  case "v5": pieceInfo = v5; break;
-  case "l4": pieceInfo = l4; break;
-  case "l5": pieceInfo = l5; break;
-  case "z4": pieceInfo = z4; break;
-  case "z5": pieceInfo = z5; break;
-  case "t4": pieceInfo = t4; break;
-  case "t5": pieceInfo = t5; break;
-  case "x5": pieceInfo = x5; break;
-  case "y5": pieceInfo = y5; break;
-  case "w5": pieceInfo = w5; break;
-  case "f5": pieceInfo = f5; break;
-  case "p5": pieceInfo = p5; break;
-  case "o4": pieceInfo = o4; break;
-      
-  case "n5": pieceInfo = n5; break;
-  case "i5": pieceInfo = i5; break;
-  case "i4": pieceInfo = i4; break;
-  case "i3": pieceInfo = i3; break;
-  case "i2": pieceInfo = i2; break;
-  case "i1": pieceInfo = i1; break;
-  default: break;
-}
-  
-  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
-  
-  var pentDiv = document.createElement("DIV");
-  pentDiv.className = "piece";
-  for (var i=0; i<25; i++) { 
-    var unit = document.createElement("DIV");
-      unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
-      unit.appendChild(document.createTextNode(unit.id));
-    if(pieceInfo[i]) unit.className = "filled";
-    
-      pentDiv.appendChild(unit);
-    if ((i+1) % 5 === 0)    pentDiv.appendChild(document.createElement("BR"));
-  }
-  
-  
- 
-  pentDiv.appendChild(document.createElement("BR"));
-  
-  document.getElementById("dynamic-pentomino").appendChild(pentDiv);
-}
-
-
-function drawPiece() {
 //function drawPiece(pieceName, pieceOrientation) {
+////function drawPiece() {
+
+//
+//
+//
+//
+//
+Polyonimo.prototype.draw = function() {
+
+  // rowlabels are only specific to the ids for the PIECES not the board!
+  // the board is 6 wide (goes to f), not 5
+  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
+
   var pieceName = currentPieceName;
   var pieceOrientation = orientations[currentOrientationIndex]; 
   
@@ -188,6 +166,7 @@ function drawPiece() {
   default: break;
 }
   
+  // little janky, turns index of orientation into number back into actual layout (25 indices rearranged to read in order to match orientation)
     switch (pieceOrientation) {
   case "N": pieceLayout = North; break;
   case "E": pieceLayout = East; break;
@@ -199,21 +178,30 @@ function drawPiece() {
   case "rW": pieceLayout = rWest; break;
   default: break;
 }
-  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
-  var pentDiv = document.createElement("DIV");
-  pentDiv.className = "piece";
+
+
+  var pieceDiv = document.createElement("DIV");
+  pieceDiv.className = "piece";
+
+  // see "createPentomino" for a for loop that was nested
+  // doesnt work for the reading of the 25 reordered indices
+  // but could have other implementation perks
   for (var i=0; i<25; i++) { 
     var unit = document.createElement("DIV");
       unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
-      //unit.appendChild(document.createTextNode(unit.id));
-    if(defaultPieceInfo[pieceLayout[i]]) unit.className = "filled";
+      unit.appendChild(document.createTextNode(unit.id)); //...........
+
+    if(defaultPieceInfo[pieceLayout[i]])
+      unit.className = "filled";
     
-      pentDiv.appendChild(unit);
-    if ((i+1) % 5 === 0)    pentDiv.appendChild(document.createElement("BR"));
+    pieceDiv.appendChild(unit);
+
+    // i should be able to do this through css alone somehow...
+    // There must be a way to do this through CSS alone......... *****
+    if ((i+1) % 5 === 0)
+      pieceDiv.appendChild(document.createElement("BR"));
   }
   
-  
- 
   
  // var a = A.parentNode.replaceChild(document.createElement("span"), A);
 // a is the replaced A element.
@@ -228,93 +216,18 @@ exP.parentNode .replaceChild(newP,exP);
   //oldDrawing.parentNode.replaceChild(pentDiv, oldDrawing);
   
   
-    pentDiv.appendChild(document.createElement("BR"));
-  
-  document.getElementById("dynamic-pentomino").appendChild(pentDiv);
-  
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function createPentomino(pieceInfo) {
-//function createPentomino() {
-function createPentomino(pieceName) {
-  
-  var pieceInfo = [0, 0, 0, 0, 0, 
-                   0, 0, 0, 0, 0, 
-                   0, 0, 0, 0, 0,
-                   0, 0, 0, 0, 0,
-                   0, 0, 0, 0, 0];
-  
-  if(pieceName == "v3") pieceInfo = v3; // getV3(); //v3;
-  if(pieceName == "v5") pieceInfo = v5; // getV5(); //v5;
-  if(pieceName == "l4") pieceInfo = l4; // getL4(); //l4;
-  if(pieceName == "l5") pieceInfo = l5; // getL5(); //l5;
-  if(pieceName == "z4") pieceInfo = z4;
-  if(pieceName == "z5") pieceInfo = z5;
-  if(pieceName == "t4") pieceInfo = t4;
-  if(pieceName == "t5") pieceInfo = t5;
-  if(pieceName == "x5") pieceInfo = x5;
-  if(pieceName == "y5") pieceInfo = y5;
-  if(pieceName == "w5") pieceInfo = w5;
-  if(pieceName == "f5") pieceInfo = f5;
-  if(pieceName == "p5") pieceInfo = p5;
-  if(pieceName == "o4") pieceInfo = o4;
-  
-  //console.log("pieceInfo: ", pieceInfo);
-  
-  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
-  
-  var pentDiv = document.createElement("DIV");
-  pentDiv.className = "piece";
-  for (var i=0; i<25; i++) { 
-    var unit = document.createElement("DIV");
-      unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
-      unit.appendChild(document.createTextNode(unit.id));
-    if(pieceInfo[i]) unit.className = "filled";
-    
-      pentDiv.appendChild(unit);
-    // i should be able to do this through css alone somehow...
-    if ((i+1) % 5 === 0)    pentDiv.appendChild(document.createElement("BR"));
-  }
-  
-  /*for (var i=1; i<6; i++){
-    for (var j=1; j<6; j++) {
-     var unit = document.createElement("DIV");
-      unit.id = rowLabels[i-1] + j;
-      unit.appendChild(document.createTextNode(unit.id));
-      
-      console.log('(i-1)*(j-1)', (i-1)*(j-1));
-      if(pieceInfo[(i-1)*(j-1)]) unit.className = "filled";
-      
-      pentDiv.appendChild(unit);
-    }*/
-   // pentDiv.appendChild(document.createElement("BR"));
- // }
- 
+  // there must also be a less janky way to do this..... ********
   pentDiv.appendChild(document.createElement("BR"));
   
-  document.getElementById("pentomino").appendChild(pentDiv);
+  // was adding to Id "dynamic-pentomino" before....
+  // can i return this??
+  document.getElementById("game-pieces").appendChild(pentDiv);
+
+  // ooh i actually want to replace my former orientation of this piece with new one....
+  // since this should only be called from a fx that manipulates appearance format layout whatever
+  
 }
 
-
-function getV3() { return v3;
-  //return [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-}
-function getV5() { return v5; }
-function getL4() { return l4; }
-function getL5() { return l5; }
 
 
 
@@ -482,6 +395,142 @@ Polyonimo.prototype.rotateRight = rotateRight();
 Polyonimo.prototype.flipVertical = flipVertical();
 Polyonimo.prototype.flipHorizontal = flipHorizontal();
 
+*/
+
+
+
+/*
+function createDynamicPentomino(pieceName) {
+  
+  var pieceInfo = emptyPiece;
+  
+  currentPieceName = pieceName; // .......
+  
+  switch (pieceName) {
+  case "v3": pieceInfo = v3; break;
+  case "v5": pieceInfo = v5; break;
+  case "l4": pieceInfo = l4; break;
+  case "l5": pieceInfo = l5; break;
+  case "z4": pieceInfo = z4; break;
+  case "z5": pieceInfo = z5; break;
+  case "t4": pieceInfo = t4; break;
+  case "t5": pieceInfo = t5; break;
+  case "x5": pieceInfo = x5; break;
+  case "y5": pieceInfo = y5; break;
+  case "w5": pieceInfo = w5; break;
+  case "f5": pieceInfo = f5; break;
+  case "p5": pieceInfo = p5; break;
+  case "o4": pieceInfo = o4; break;
+      
+  case "n5": pieceInfo = n5; break;
+  case "i5": pieceInfo = i5; break;
+  case "i4": pieceInfo = i4; break;
+  case "i3": pieceInfo = i3; break;
+  case "i2": pieceInfo = i2; break;
+  case "i1": pieceInfo = i1; break;
+  default: break;
+}
+  
+  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
+  
+  var pentDiv = document.createElement("DIV");
+  pentDiv.className = "piece";
+  for (var i=0; i<25; i++) { 
+    var unit = document.createElement("DIV");
+      unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
+      unit.appendChild(document.createTextNode(unit.id));
+    if(pieceInfo[i]) unit.className = "filled";
+    
+      pentDiv.appendChild(unit);
+    if ((i+1) % 5 === 0)    pentDiv.appendChild(document.createElement("BR"));
+  }
+  
+  
+ 
+  pentDiv.appendChild(document.createElement("BR"));
+  
+  document.getElementById("dynamic-pentomino").appendChild(pentDiv);
+}*/
+
+
+
+
+
+
+
+
+
+
+/*
+
+// function createPentomino(pieceInfo) {
+//function createPentomino() {
+function createPentomino(pieceName) {
+  
+  var pieceInfo = [0, 0, 0, 0, 0, 
+                   0, 0, 0, 0, 0, 
+                   0, 0, 0, 0, 0,
+                   0, 0, 0, 0, 0,
+                   0, 0, 0, 0, 0];
+  
+  if(pieceName == "v3") pieceInfo = v3; // getV3(); //v3;
+  if(pieceName == "v5") pieceInfo = v5; // getV5(); //v5;
+  if(pieceName == "l4") pieceInfo = l4; // getL4(); //l4;
+  if(pieceName == "l5") pieceInfo = l5; // getL5(); //l5;
+  if(pieceName == "z4") pieceInfo = z4;
+  if(pieceName == "z5") pieceInfo = z5;
+  if(pieceName == "t4") pieceInfo = t4;
+  if(pieceName == "t5") pieceInfo = t5;
+  if(pieceName == "x5") pieceInfo = x5;
+  if(pieceName == "y5") pieceInfo = y5;
+  if(pieceName == "w5") pieceInfo = w5;
+  if(pieceName == "f5") pieceInfo = f5;
+  if(pieceName == "p5") pieceInfo = p5;
+  if(pieceName == "o4") pieceInfo = o4;
+  
+  //console.log("pieceInfo: ", pieceInfo);
+  
+  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
+  
+  var pentDiv = document.createElement("DIV");
+  pentDiv.className = "piece";
+  for (var i=0; i<25; i++) { 
+    var unit = document.createElement("DIV");
+      unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
+      unit.appendChild(document.createTextNode(unit.id));
+    if(pieceInfo[i]) unit.className = "filled";
+    
+      pentDiv.appendChild(unit);
+    // i should be able to do this through css alone somehow...
+    if ((i+1) % 5 === 0)    pentDiv.appendChild(document.createElement("BR"));
+  }
+  
+  /*for (var i=1; i<6; i++){
+    for (var j=1; j<6; j++) {
+     var unit = document.createElement("DIV");
+      unit.id = rowLabels[i-1] + j;
+      unit.appendChild(document.createTextNode(unit.id));
+      
+      console.log('(i-1)*(j-1)', (i-1)*(j-1));
+      if(pieceInfo[(i-1)*(j-1)]) unit.className = "filled";
+      
+      pentDiv.appendChild(unit);
+    }* /
+   // pentDiv.appendChild(document.createElement("BR"));
+ // }
+ 
+  pentDiv.appendChild(document.createElement("BR"));
+  
+  document.getElementById("pentomino").appendChild(pentDiv);
+}
+
+
+function getV3() { return v3;
+  //return [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+}
+function getV5() { return v5; }
+function getL4() { return l4; }
+function getL5() { return l5; }
 */
 
 
