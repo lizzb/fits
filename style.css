@@ -118,6 +118,7 @@ blue: rgb(37,193, 255);
 /* ----- Pink: Circle ----- */
 
 /*
+BLACK LARGE CIRCLE &#x2b24;
 pink: rgb(255, 104, 168);
 pink: rgb(255, 113, 166);
 */
@@ -153,7 +154,7 @@ purple: rgb(189, 86, 159);
   display: inline-block;
   position: relative;
 }
-.piece div {
+.board div, .piece div {
   height: 30px;
   width: 30px;
   display: inline-block;
@@ -163,8 +164,11 @@ purple: rgb(189, 86, 159);
   
   border: 1px solid black;
   background-color: #efefef;
+  text-align: center;
+  vertical-align: middle; /* ....... */
 }
 
+.board div {background-color: #eeccee;}
 
 /*
 Using a formula (an + b). Description: a represents a cycle size, n is a counter (starts at 0), and b is an offset value.
