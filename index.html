@@ -14,411 +14,36 @@
 window.addEventListener('load', function(e) {
   document.querySelector('#test').innerHTML = 'fitris';
 
-  /*for (var i = Things.length - 1; i >= 0; i--) {
-    Things[i]
-  };
-}, false);*/
 /*
 var pieces = document.querySelector('#game-pieces');
 pieces.innerHTML += "";
+*/
 
-for (var i = 0; i < pieceNames.length; i++) {
-  //polyonimos[i]
-}*/
+
+function makeAllPieces(){
+  
+// for each piece
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+
+  var pieceObjects = [];
+  
+  for(var i=0; i<pieces.length; i++) {
+    pieceObjects[i] = new Polyomino(pieceNames[i], pieces[i]);
+    //var piece = document.createElement("DIV");
+     // piece.id = pieceNames[i];
+    //document.getElementById("polyominos").appendChild(piece);
+    
+  }
+ 
+  for(var j=0; j<pieceObjects.length; j++) {
+    pieceObjects[j].draw();
+  }
+   
+}
+
 });
 
-
-// board = 72
-// 6 columns (abcdef) by 12 rows (1-12)
-
-// enums??
-var dot = -1;
-var plus1 = 1;
-var plus2 = 2;
-var plus3 = 3;
-var minus5 = -5; // add1 sub1 instead? symbol1 sym1
-//var symb1, symb2, symb3, symb4 = 0;
-
-
-// all normal dots
-/*var board1 = [
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0
-];*/
-
-var board0 = [
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0
-];
-
-var board1 = [
-//a   b    c    d    e    f
-dot, dot, dot, dot, dot, dot,   // 1
-dot, dot, dot, dot, dot, dot,   // 2
-dot, dot, dot, dot, dot, dot,   // 3
-dot, dot, dot, dot, dot, dot,   // 4
-dot, dot, dot, dot, dot, dot,   // 5
-dot, dot, dot, dot, dot, dot,   // 6
-dot, dot, dot, dot, dot, dot,   // 7
-dot, dot, dot, dot, dot, dot,   // 8
-dot, dot, dot, dot, dot, dot,   // 9
-dot, dot, dot, dot, dot, dot,   // 10
-dot, dot, dot, dot, dot, dot,   // 11
-dot, dot, dot, dot, dot, dot    // 12
-];
-
-/*
- a    b    c    d    e    f
-*/
-var board2 = [
-dot, dot, dot, dot, dot, dot,   // 1
-dot, dot, dot, dot, dot, dot,   // 2
-dot, dot, plus3, dot, dot, dot, // 3
-dot, dot, dot, dot, plus1, dot,   // 4
-dot, plus2, dot, dot, dot, dot,   // 5
-dot, dot, dot, dot, dot, dot,   // 6
-dot, dot, dot, dot, dot, plus3,   // 7
-plus1, plus1, dot, dot, dot, dot,   // 8
-dot, dot, dot, dot, dot, dot,   // 9
-dot, dot, dot, plus2, dot, dot,   // 10
-dot, dot, dot, dot, dot, dot,   // 11
-dot, dot, dot, dot, dot, dot    // 12
-];
-
-//var board2 = [];
-// c3, 7f = 3
-// b5, d10 = 2
-// e4, a8, b8 = 1
-
-
-//var board3 = [];
-// -5 = a1, f1, a8, b7, c11, e4, f5, f9
-// 3 = 6b, 5e
-// 2 = e9, e10
-// 1 = b2, b3
-
-
-
-var board3 = [
-//a   b    c    d    e    f
-minus5, dot, dot, dot, dot, minus5,   // 1
-dot, plus1, dot, dot, dot, dot,   // 2
-dot, plus1, dot, dot, dot, dot,   // 3
-dot, dot, dot, dot, minus5, dot,   // 4
-dot, dot, dot, dot, plus3, minus5,   // 5
-dot, plus3, dot, dot, dot, dot,   // 6
-dot, minus5, dot, dot, dot, dot,   // 7
-minus5, dot, dot, dot, dot, dot,   // 8
-dot, dot, dot, dot, plus2, minus5,   // 9
-dot, dot, dot, dot, plus2, dot,   // 10
-dot, dot, minus5, dot, dot, dot,   // 11
-dot, dot, dot, dot, dot, dot    // 12
-];
-
-var symb1 = "&#x2736;"; // blue 6pt star
-var symb2 = "&#x25B2;"; // orange triangle
-var symb3 = "&#x2b24;"; // pink circle
-var symb4 = "&#x2b25;"; // green diamond
-var symb5 = "&#x2716;"; // purple X
-//var board4 = [];
-
-// blue 6pt star = 11a, 8f ... &#x2736;
-// orange triangle = 9b, 10e ... &#x25B2; 
-// pink circle = 7d, 5a ... &#x2b24;
-// green diamond = 4f, 7c ... &#x2b25;
-// purple X = e2, c3 ... &#x2716; 
-
-
-
-
-var board4 = [
-//a   b    c    d    e    f
-dot, dot, dot, dot, dot, dot,   // 1
-dot, dot, dot, dot, symb5, dot,   // 2
-dot, dot, symb5, dot, dot, dot,   // 3
-dot, dot, dot, dot, dot, symb4,   // 4
-symb3, dot, dot, dot, dot, dot,   // 5
-dot, dot, dot, dot, dot, dot,   // 6
-dot, dot, symb4, symb3, dot, dot,   // 7
-dot, dot, dot, dot, dot, symb1,   // 8
-dot, symb2, dot, dot, dot, dot,   // 9
-dot, dot, dot, dot, symb2, dot,   // 10
-symb1, dot, dot, dot, dot, dot,   // 11
-dot, dot, dot, dot, dot, dot    // 12
-];
-
-// 6 columns (abcdef) by 12 rows (1-12)
-function createBoard(roundNum) {
-
-var colLabels = ['a', 'b', 'c', 'd', 'e', 'f'];
-
-var boardLayout = board0; 
-
-switch (roundNum) {
-  case 1: boardLayout = board1; break;
-  case 2: boardLayout = board2; break;
-  case 3: boardLayout = board3; break;
-  case 4: boardLayout = board4; break;
-  default: break;
-}
-// div .board
-
-
-var boardDiv = document.createElement("DIV");
-  boardDiv.className = "board";
-  boardDiv.id = "round"+roundNum;
-  for (var i=0; i<72; i++) { 
-    var slot = document.createElement("DIV");
-      slot.id = colLabels[i%6] + Math.floor(i/6 + 1);
-      //slot.appendChild(document.createTextNode(slot.id)); //...........
-
-      var displayIcon = "";
-      switch (boardLayout[i]) {
-        case dot: displayIcon = "."; break;
-        case plus1: displayIcon = "(1)"; break;
-        case plus2: displayIcon = "(2)"; break;
-        case plus3: displayIcon = "(3)"; break;
-        case minus5: displayIcon = "(-5)"; break;
-        case symb1: displayIcon = "&#x2736;"; break; // blue 6pt star
-        case symb2: displayIcon = "&#x25B2;"; break; // orange triangle
-        case symb3: displayIcon = "&#x2b24;"; break; // pink circle
-        case symb4: displayIcon = "&#x2b25;"; break; // green diamond
-        case symb5: displayIcon = "&#x2716;"; break; // purple X
-        default: displayIcon = ""; break; // displayIcon = "O"; break;
-      }
-      slot.appendChild(document.createTextNode(displayIcon));
-
-    //if(defaultPieceInfo[boardLayout[i]])
-    //  unit.className = "filled";
-    boardDiv.appendChild(slot);
-    if ((i+1) % 6 === 0)
-      boardDiv.appendChild(document.createElement("BR"));
-  }
-  boardDiv.appendChild(document.createElement("BR"));
-  document.getElementById("boards").appendChild(boardDiv);
-    
-}
-
-
-
-
-// ---------------------------------------------
-// STILL USING THIS, NOT YET ON PROTOTYPES
-
-var currentOrientationIndex = 0; //"N";
-//var currentOrientation = orientations[currentOrientationIndex]; 
-var currentPieceName = "v3"; 
-
-//createPentomino('x5')
-//
-//
-//
-function createPentomino(pieceName) {
-
-  // rowlabels are only specific to the ids for the PIECES not the board!
-  // the board is 6 wide (goes to f), not 5
-  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
-
-  currentPieceName = pieceName;
-  //var pieceName = currentPieceName;
-  //var currentOrientationIndex = 0;
-  var pieceOrientation = orientations[currentOrientationIndex]; 
-  
-  var defaultPieceInfo = emptyPiece;
-  var pieceLayout = North; // array of 25 indices, order to read the info
-  
-  switch (pieceName) {
-  case "v3": defaultPieceInfo = v3; break;
-  case "v5": defaultPieceInfo = v5; break;
-  case "l4": defaultPieceInfo = l4; break;
-  case "l5": defaultPieceInfo = l5; break;
-  case "z4": defaultPieceInfo = z4; break;
-  case "z5": defaultPieceInfo = z5; break;
-  case "t4": defaultPieceInfo = t4; break;
-  case "t5": defaultPieceInfo = t5; break;
-  case "x5": defaultPieceInfo = x5; break;
-  case "y5": defaultPieceInfo = y5; break;
-  case "w5": defaultPieceInfo = w5; break;
-  case "f5": defaultPieceInfo = f5; break;
-  case "p5": defaultPieceInfo = p5; break;
-  case "o4": defaultPieceInfo = o4; break;
-      
-  case "n5": defaultPieceInfo = n5; break;
-  case "i5": defaultPieceInfo = i5; break;
-  case "i4": defaultPieceInfo = i4; break;
-  case "i3": defaultPieceInfo = i3; break;
-  case "i2": defaultPieceInfo = i2; break;
-  case "i1": defaultPieceInfo = i1; break;
-  default: break;
-}
-  
-  // little janky, turns index of orientation into number back into actual layout (25 indices rearranged to read in order to match orientation)
-    switch (pieceOrientation) {
-  case "N": pieceLayout = North; break;
-  case "E": pieceLayout = East; break;
-  case "S": pieceLayout = South; break;
-  case "W": pieceLayout = West; break;
-  case "rN": pieceLayout = rNorth; break;
-  case "rE": pieceLayout = rEast; break;
-  case "rS": pieceLayout = rSouth; break;
-  case "rW": pieceLayout = rWest; break;
-  default: break;
-}
-
-
-  var pieceDiv = document.createElement("DIV");
-  pieceDiv.className = "piece";
-  for (var i=0; i<25; i++) { 
-    var unit = document.createElement("DIV");
-      unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
-      unit.appendChild(document.createTextNode(unit.id)); //...........
-
-    if(defaultPieceInfo[pieceLayout[i]])
-      unit.className = "filled";
-    pieceDiv.appendChild(unit);
-    if ((i+1) % 5 === 0)
-      pieceDiv.appendChild(document.createElement("BR"));
-  }
-  pieceDiv.appendChild(document.createElement("BR"));
-  document.getElementById("game-pieces").appendChild(pieceDiv);
-
-document.getElementById("currentPiece").innerHTML = currentPieceName;
-document.getElementById("currentOrientationIndex").innerHTML = currentOrientationIndex;
-document.getElementById("currentOrientation").innerHTML = orientations[currentOrientationIndex]; 
-
-//  <li id="currentPiece"></li>
-//<li id="currentOrientationIndex"></li>
-//<li id="currentOrientation"></li>
-  
-}
-
-// -----------------------------------------------------------
-// ROTATE LEFT (counterclockwise)
-// -----------------------------------------------------------
-function rotateLeft() {
-  var oldIndex = currentOrientationIndex; //this.orientationIdx;
-  currentOrientationIndex--; //this.orientationIdx--;
-
-  if( (oldIndex < 4 && currentOrientationIndex < 0) || (oldIndex >= 4 && currentOrientationIndex < 4) )
-    currentOrientationIndex+=4;
-
-  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
-              " --> rotate LEFT --> " + 
-              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
-  console.log(debug);
-  
-  // REDRAW MOST RECENTLY SELECTED PIECE
-  createPentomino(currentPieceName);
-}
-
-
-// -----------------------------------------------------------
-// ROTATE RIGHT (clockwise)
-// -----------------------------------------------------------
-function rotateRight() {
-  var oldIndex = currentOrientationIndex; //this.orientationIdx;
-  currentOrientationIndex = ( currentOrientationIndex + 1 ) % 4;
-  //this.orientationIdx = (this.orientationIdx + 1) % 4; 
-  
-  if(oldIndex >= 4) currentOrientationIndex+=4; // rN rE rS rW need adjustment, NESW dont
-  
-  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
-              " --> rotate RIGHT --> " +
-              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
-  console.log(debug);
-  
-  // REDRAW MOST RECENTLY SELECTED PIECE
-  createPentomino(currentPieceName);
-}
-
-
-
-
-//
-// 1 --> 7, 7 --> 1, 3 --> 5, 5 --> 3
-// -----------------------------------------------------------
-// FLIP VERTICAL 
-// -----------------------------------------------------------
-function flipVertical() {
-  var oldIndex = currentOrientationIndex; //this.orientationIdx;
-  
-  // N <--> rN, S <--> rS
-  // E <--> rW, W <--> rE
-  //  N  E  S  W
-  //  ↕  ↕  ↕  ↕
-  // rN rW rS rE
-  
-  // N S rN rS (even indices)
-  if(currentOrientationIndex % 2 === 0)
-      currentOrientationIndex = (currentOrientationIndex + 4) % 8;
-    
-  // E rW W rE (odd indices)
-  else
-      currentOrientationIndex = 8 - currentOrientationIndex;
-  
-  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
-              " --> flip VERTICAL --> " +
-              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
-  console.log(debug);
-  
-  // REDRAW MOST RECENTLY SELECTED PIECE
-  createPentomino(currentPieceName);
-}
-
-
-
-//
-// 0 --> 6, 6 --> 0, 2 --> 4, 4 --> 2
-//
-// -----------------------------------------------------------
-// FLIP HORIZONTAL 
-// -----------------------------------------------------------
-function flipHorizontal() {
-  var oldIndex = currentOrientationIndex; //this.orientationIdx;
-  
-  // N <--> rS, S <--> rN
-  // E <--> rE, W <--> rW
-  //  N  E  S  W
-  //  ↕  ↕  ↕  ↕
-  // rS rE rN rW
-  
-    // N S rN rS (even indices)
-  if(currentOrientationIndex % 2 === 0)
-      currentOrientationIndex = 6 - currentOrientationIndex;
-      
-    
-  // E rW W rE (odd indices)
-  else
-      currentOrientationIndex = (currentOrientationIndex + 4) % 8;
-  
-  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
-              " --> flip HORIZONTAL --> " +
-              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
-  console.log(debug);
-  
-  // REDRAW MOST RECENTLY SELECTED PIECE
-  createPentomino(currentPieceName);
-}
 </script>
 
 
@@ -426,6 +51,83 @@ function flipHorizontal() {
 
 <body>
 <header>
+
+
+
+
+<div id="polyominos"></div>
+
+<!-- 
+
+
+<a href="http://timkadlec.com/2008/01/using-prototypes-in-javascript">Using Prototypes in Javascript</a>
+<br>
+(the prototype method, not the JavaScript library)
+
+
+
+
+
+<p>Prototypes allow you to easily define methods to all instances of a particular object. The beauty is that the method is applied to the prototype, so it is only stored in the memory once, but every instance of the object has access to it. Let’s use the Pet object:</p>
+
+<pre>
+// Pet object
+function Pet(name, species){
+    this.name = name;
+    this.species = species;
+}
+
+function view(){
+    return this.name + " is a " + this.species + "!";
+}
+
+// By using 'prototype' to attach the view method,
+// now all instances of Pet objects have access to the view method
+Pet.prototype.view = view;
+
+//var pet1 = new Pet('Gabriella', 'Dog');
+//alert(pet1.view()); //Outputs "Gabriella is a Dog!"
+
+
+// Dog object inherits methods and properties from Pet object
+// and also has its own dog-specific function
+// that only Dog objects can access
+
+// Set up Dog object
+function Dog(name){
+  // using the call() method allows us to
+  // call a specific target function within an object
+  // by passing in the object we want to run the function on
+  // (referenced by ‘this’ on next line) followed by the arguments.
+    Pet.call(this, name, "dog");
+}
+
+// Below line ensures Our Dog object would still inherit from the Pet object
+Dog.prototype = new Pet();
+
+// Custom method called bark that only Dog objects have access to
+Dog.prototype.bark = function(){
+    alert("Woof!");
+};
+
+//var pet1 = new Pet('Trudy', 'Bird');
+//var pet2 = new Dog('Gabriella');
+
+// First checks if Dog object has its own view method
+// If not, checks if Pet object has a view method,
+// then uses that inherited view method
+//alert(pet2.view()); // Outputs "Gabriella is a Dog!"
+
+//pet2.bark(); // Outputs "Woof!"
+//pet1.bark(); // Error
+</pre>
+
+
+<div id="dynamic-pentomino"></div>
+-->
+
+
+
 
 <h1 id="test"></h1>
 

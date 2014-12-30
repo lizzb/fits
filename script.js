@@ -1,212 +1,45 @@
-// empty piece
-var none = [0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0];   
+// Each pair of variables and variables name lists MUST be in same order
+// using it like a map, 1 index to access both arrays
+// and link the information [to create a polyonimo object]
 
-/*  var w5 =  [0, 0, 0, 0, 0, 
-            0, 1, 0, 0, 0, 
-            0, 1, 1, 0, 0,
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0];
-
-  var x5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 0, 0, 
-            0, 1, 1, 1, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var y5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 0, 0, 
-            0, 1, 1, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 1, 0, 0];
-
-  var f5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 1, 0, 
-            0, 1, 1, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var p5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 1, 0, 
-            0, 0, 1, 1, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];*/
-
-
-  
-  var v5 = [0, 0, 0, 0, 0, 
-            0, 1, 0, 0, 0, 
-            0, 1, 0, 0, 0,
-            0, 1, 1, 1, 0,
-            0, 0, 0, 0, 0];
-
-  var l4 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 0, 0, 
-            0, 0, 1, 0, 0,
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0];
-
-  var l5 = [0, 0, 1, 0, 0, 
-            0, 0, 1, 0, 0, 
-            0, 0, 1, 0, 0,
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0];
-
-  var z4 = [0, 0, 0, 0, 0, 
-            0, 1, 1, 0, 0, 
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var z5 = [0, 0, 0, 0, 0, 
-            0, 1, 1, 0, 0, 
-            0, 0, 1, 0, 0,
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0];
-
-  var y5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 0, 0, 
-            0, 1, 1, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 1, 0, 0];
-
-  var w5 = [0, 0, 0, 0, 0, 
-            0, 1, 0, 0, 0, 
-            0, 1, 1, 0, 0,
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0];
-
-  var x5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 0, 0, 
-            0, 1, 1, 1, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var t4 = [0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 
-            0, 1, 1, 1, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var t5 = [0, 0, 0, 0, 0, 
-            0, 1, 1, 1, 0, 
-            0, 0, 1, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var f5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 1, 0, 
-            0, 1, 1, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var p5 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 1, 0, 
-            0, 0, 1, 1, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0, 0];
-
-  var o4 = [0, 0, 0, 0, 0, 
-            0, 0, 1, 1, 0, 
-            0, 0, 1, 1, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0];
-
-// n5, i5, i4, i3, i2, i1
-
-
-
-
-
-var North = [
-  0, 1, 2, 3, 4,
-  5, 6, 7, 8, 9,
-  10, 11, 12, 13, 14,
-  15, 16, 17, 18, 19,
-  20, 21, 22, 23, 24
-];
-
-
-var East = [
-  20, 15, 10, 5, 0,
-  21, 16, 11, 6, 1,
-  22, 17, 12, 7, 2,
-  23, 18, 13, 8, 3,
-  24, 19, 14, 9, 4
-];
-
-var South = [
-  24, 23, 22, 21, 20,
-  19, 18, 17, 16, 15,
-  14, 13, 12, 11, 10,
-  9, 8, 7, 6, 5,
-  4, 3, 2, 1, 0
-];
-    
-var West = [
-  4, 9, 14, 19, 24,
-  3, 8, 13, 18, 23,
-  2, 7, 12, 17, 22,
-  1, 6, 11, 16, 21,
-  0, 5, 10, 15, 20
-];
-
-var rNorth = [
-  4, 3, 2, 1, 0,
-  9, 8, 7, 6, 5,
-  14, 13, 12, 11, 10,
-  19, 18, 17, 16, 15,
-  24, 23, 22, 21, 20
-];
-
-var rEast = [
-  0, 5, 10, 15, 20,
-  1, 6, 11, 16, 21,
-  2, 7, 12, 17, 22,
-  3, 8, 13, 18, 23,
-  4, 9, 14, 19, 24
-];
-
-var rSouth =  [
-  20, 21, 22, 23, 24,
-  15, 16, 17, 18, 19,
-  10, 11, 12, 13, 14,
-  5, 6, 7, 8, 9,
-  0, 1, 2, 3, 4
-];
-
-var rWest = [
-  24, 19, 14, 9, 4,
-  23, 18, 13, 8, 3,
-  22, 17, 12, 7, 2,
-  21, 16, 11, 6, 1,
-  20, 15, 10, 5, 0
-];
-
-
+var pieces = [i1, i2, i3, i4, i5, o4, f5, n5, p5, v3, v5, t4, t5, z4, z5, w5, x5, y5];
+var pieceNames = ["i1", "i2", "i3", "i4", "i5", "o4", "f5", "n5", "p5", "v3", "v5", "t4", "t5", "z4", "z5", "w5", "x5", "y5" ];
 
 var orientations = [North, East, South, West, rNorth, rEast, rSouth, rWest];
-
-var pieces = [/*i1, i2, i3, i4, i5,*/ o4, f5, /*n5,*/ p5, /*v3,*/ v5, t4, t5, z4, z5, w5, x5, y5];
-
-var pieceNames = [/*"i1", "i2", "i3", "i4", "i5",*/ "o4", "f5", /*"n5",*/ "p5", /*"v3",*/ "v5", "t4", "t5", "z4", "z5", "w5", "x5", "y5" ];
-
 var orientationNames = ["N", "E", "S", "W", "rN", "rE", "rS", "rW"];
 
 
+  // rowlabels are only specific to the ids for the PIECES not the board!
+  // the board is 6 wide (goes to f), not 5
+  var rowLabels = ['a', 'b', 'c', 'd', 'e'];
 
 
+// can i do enums or something....???  
 
+/*
+// polyonimos
+var pieceNames = [
+"i1", "i2", "i3", "i4", "i5", 
+"o4", "f5", "n5", "p5", 
+"v3", "v5", 
+"t4", "t5", 
+"z4", "z5", 
+"w5", "x5", "y5" ];
+*/
 
 
 
 function Polyomino(name, structure) {
   this.name = name;
-  this.structure = structure;
+
+  // square grid of appearance of piece
+  this.structure = structure; 
   
+
+  // little janky,
+  // turns index of orientation into number back into actual layout
+  // (25 indices rearranged to read in order to match orientation)
+
   //this.orientation = North;
   this.orientationIdx = 0; // north
   
@@ -230,9 +63,9 @@ Polyomino.prototype.draw = function() {
   
   // array of 25 indices, order to read the info
   var pieceLayout = orientations[this.orientationIdx];
-  //console.log(pieceLayout);
   var defaultPieceInfo = this.structure;
- // console.log(defaultPieceInfo);
+    //console.log(pieceLayout);
+    // console.log(defaultPieceInfo);
   
   
   var pieceDiv = document.createElement("DIV");
@@ -243,19 +76,18 @@ Polyomino.prototype.draw = function() {
     var unit = document.createElement("DIV");
       unit.id = rowLabels[i%5] + Math.floor(i/5 + 1);
       //unit.appendChild(document.createTextNode(unit.id));
-    if(defaultPieceInfo[pieceLayout[i]]) unit.className = "filled";
+    if(defaultPieceInfo[pieceLayout[i]])
+      unit.className = "filled";
     
-      pieceDiv.appendChild(unit);
-    if ((i+1) % 5 === 0)            pieceDiv.appendChild(document.createElement("BR"));
+    pieceDiv.appendChild(unit);
+    if ((i+1) % 5 === 0)
+      pieceDiv.appendChild(document.createElement("BR"));
   }
   
   pieceDiv.appendChild(document.createElement("BR"));
 
-  
- //document.getElementById("dynamic-pentomino").appendChild(pieceDiv);
-  document.getElementById("polyominos").appendChild(pieceDiv); 
- // console.log("4");
-  
+//   document.getElementById("game-pieces").appendChild(pieceDiv);
+    document.getElementById("polyominos").appendChild(pieceDiv); 
 };
 
 
@@ -341,6 +173,9 @@ exP.parentNode .replaceChild(newP,exP);
   //oldDrawing.parentNode.replaceChild(pentDiv, oldDrawing);
 
 
+// -----------------------------------------------------------
+// ROTATE RIGHT (clockwise)
+// -----------------------------------------------------------
 //
 // Rotate Right
 //
@@ -348,11 +183,24 @@ Polyomino.prototype.rotateCW = function() {
   var oldOrientationIdx = this.orientationIdx;
   
   this.orientationIdx = (this.orientationIdx + 1) % 4; // NESW
+
+  // rN rE rS rW need adjustment, NESW dont
   if (oldOrientationIdx > 3) this.orientationIdx += 4; // rN rE rS rW
 
+  /*
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> rotate RIGHT --> " +
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  */
+
+  // Redraw this piece, replacing image of its old orientation
   this.redraw(); //this.draw();
 };
 
+// -----------------------------------------------------------
+// ROTATE LEFT (counterclockwise)
+// -----------------------------------------------------------
 // Rotate Left
 Polyomino.prototype.rotateCCW = function() {
   var oldOrientationIdx = this.orientationIdx;
@@ -361,31 +209,60 @@ Polyomino.prototype.rotateCCW = function() {
   // NESW   // rN rE rS rW
   if (oldOrientationIdx === 0 || oldOrientationIdx === 4)
     this.orientationIdx += 4; 
+
+  /*
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> rotate LEFT --> " + 
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  */
   
   this.redraw(); //this.draw();
 };
 
 
 
+//
+// 1 --> 7, 7 --> 1, 3 --> 5, 5 --> 3
+// -----------------------------------------------------------
+// FLIP VERTICAL 
+// -----------------------------------------------------------
 Polyomino.prototype.flipVertical = function() {
+  // N <--> rN, S <--> rS
+  // E <--> rW, W <--> rE
   //  N  E  S  W
   //  ↕  ↕  ↕  ↕
   // rN rW rS rE
   //var oldOrientationIdx = this.orientationIdx;
   
-  // N S rN rS
+  // N S rN rS (even indices)
   if(this.orientationIdx % 2 === 0 )
     this.orientationIdx = (this.orientationIdx + 4) % 8;
  
   else // E rW W rE (odd indices)
     this.orientationIdx = 8 - this.orientationIdx;
   // 1 --> 7, 7 --> 1, 3 --> 5, 5 --> 3
+
+
+  /*
+  var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> flip VERTICAL --> " +
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  */
   
   this.redraw(); //this.draw();
 };
 
-
+//
+// 0 --> 6, 6 --> 0, 2 --> 4, 4 --> 2
+//
+// -----------------------------------------------------------
+// FLIP HORIZONTAL 
+// -----------------------------------------------------------
 Polyomino.prototype.flipHorizontal = function() {
+  // N <--> rS, S <--> rN
+  // E <--> rE, W <--> rW 
   //  N  E  S  W
   //  ↕  ↕  ↕  ↕
   // rS rE rN rW
@@ -398,28 +275,36 @@ Polyomino.prototype.flipHorizontal = function() {
  
   else // E rW W rE (odd indices)
     this.orientationIdx = (this.orientationIdx + 4) % 8;
+
+  /*
+    var debug = orientations[oldIndex] + "("+ oldIndex + ")" +
+              " --> flip HORIZONTAL --> " +
+              orientations[currentOrientationIndex] + "(" + currentOrientationIndex + ")";
+  console.log(debug);
+  */
     
   this.redraw(); //this.draw(); 
 };
 
-function makeAllPieces(){
-  
-  var pieceObjects = [];
-  
-  for(var i=0; i<pieces.length; i++) {
-    pieceObjects[i] = new Polyomino(pieceNames[i], pieces[i]);
-    //var piece = document.createElement("DIV");
-     // piece.id = pieceNames[i];
-    //document.getElementById("polyominos").appendChild(piece);
-    
-  }
- 
-  for(var j=0; j<pieceObjects.length; j++) {
-    pieceObjects[j].draw();
-  }
-   
-  
-   
-}
+
+
+
+
+
+/*
+// ---------------------------------------------
+// STILL USING THIS, NOT YET ON PROTOTYPES
+
+var currentOrientationIndex = 0; //"N";
+//var currentOrientation = orientations[currentOrientationIndex]; 
+var currentPieceName = "v3"; 
+
+//createPentomino('x5')
+/*function createPentomino(pieceName) {
+...
+document.getElementById("currentPiece").innerHTML = currentPieceName;
+...
+}*/
+
 
 
