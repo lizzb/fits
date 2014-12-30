@@ -16,6 +16,229 @@ body {font-family: Helvetica, sans-serif;}
 
 .button strong {font-size: 24px; vertical-align: middle;}
 
+
+
+
+.piece { 
+  padding: 10px;
+  margin: 0px;
+  display: inline-block;
+  position: relative;
+}
+.board div, .piece div {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  position: relative;
+  padding: 0px;
+  margin: -1.5px;
+  
+  border: 1px solid black;
+  background-color: #efefef;
+  text-align: center;
+  vertical-align: middle; /* ....... */
+}
+
+.board div {background-color: #eeccee;}
+
+/*
+Using a formula (an + b). Description: a represents a cycle size, n is a counter (starts at 0), and b is an offset value.
+EXAMPLE: specify a background color for all p elements whose index is a multiple of 3:  3n + 0
+.piece div:nth-child(5) {}
+*/
+.piece div:nth-child(6n-1) {
+    background: #dddded;
+}
+
+/* or div .filled? this is funky does NOT WORK WITH .piece div:nth-child 
+okay and JUST .filled wasnt working but couldnt tell for longest time*/
+div:nth-child(6n-1) .filled,
+div .filled {
+  background-color: teal;
+}
+
+/*
+http://jsfiddle.net/marcuswhybrow/YMN7U/5/
+li:nth-child(4) { clear: left; }
+
+http://jsfiddle.net/dWkdp/
+li:nth-child(3):after { content:"\A"; white-space:pre; }
+*/
+
+
+/*
+http://codepen.io/lizz/pen/ByQBpY?editors=110
+*/
+
+/** { box-sizing: border-box; }*/
+
+.red, .yellow, .green, .blue {
+  height: 350px;
+  width: 150px;
+  background-color: lightgrey;
+  position: relative;
+  display: inline-block;
+  
+}
+
+div .piece {display: block; height: 25px; width: 25px;}
+
+/*span {display: block; width: 100px;}*/
+
+/*
+outer = rgb(255,85,97);
+  gradient inwards to rgb(255,171,134); or 255, 154, 138? 
+  more like 255, 177, 162
+*/
+.red {
+  background-image:
+    radial-gradient(
+      rgb(255, 177, 162),
+      rgb(255, 85, 97)
+    );
+}
+
+.yellow {
+  background-image:
+    radial-gradient(
+      yellow, /*inner*/
+      #f06d06 /*outer*/
+    );
+}
+
+.yellow {
+  background-image:
+    radial-gradient(
+      rgb(248,224,120),
+      rgb(254, 189,60)
+    );
+}
+
+.green {
+  background-image:
+    radial-gradient(
+      rgb(90,197,140), 
+      rgb(0, 178, 118) 
+    );
+}
+
+.blue {
+  background-image:
+    radial-gradient(
+      rgb(7,190,236),
+      rgb(0,139,224)
+      /*or 0 120 172 or 0 125 205*/
+    );
+}
+
+
+.red > .dot { color: rgb(255,82,69);  }
+.red > .piece { 
+  background-color: rgb(247, 0, 0);
+}
+
+.yellow > .dot { color: rgb(254, 201, 57); }
+.yellow > .piece { 
+  background-color: rgb(255,157,0);
+}
+
+.green > .dot { color: rgb(0, 164, 94); }
+
+.green > .piece {
+  background-color: rgb(0, 148, 90);
+}
+
+.blue > .dot { 
+  color: rgb(1, 136, 199);
+  /* 0, 133, 202*/
+}
+
+.blue > .piece {
+  background-color: rgb(0, 127, 212);
+  /* 0 127 212, or 2, 124, 220 */
+}
+
+.star-symbol {
+  /*blue: 11, 191, 255
+  blue: 37,193, 255*/
+  color: rgb(11, 191, 255);
+}
+
+.triangle-symbol {
+  /*orange: 255, 131, 19
+  orange: 255, 139, 35 */
+  color: rgb(255, 131, 19);
+}
+
+
+
+.circle-symbol {
+  /*pink: 255, 104, 168
+  pink: 255, 113, 166*/
+  color: rgb(255, 104, 168);
+}
+
+.diamond-symbol {
+  /*lime: 132, 186, 41);*/
+  color: rgb(132, 186, 41);
+}
+
+.close-symbol {
+  /*purple: 189, 86, 159*/
+  color: rgb(189, 86, 159);
+}
+
+
+  /*bright blue -  SIX POINTED BLACK STAR &#x2736;*/
+
+.star-symbol:after {
+  content: "&#x2736;"
+}
+
+.triangle-symbol:after {
+/*BLACK UP-POINTING TRIANGLE &#x25B2; */
+  content:"&#x25B2;";
+}
+
+/*BLACK MEDIUM DIAMOND &#x2b25; */
+/* BLACK DIAMOND &#x25C6; (small)*/
+.diamond-symbol:after {
+  content:"&#x2b25;";
+}
+
+.close-symbol:after{
+/*HEAVY MULTIPLICATION X &#x2716;*/
+  content:"&#x2716;";
+}
+
+.circle-symbol:after{
+  content: "O";
+}
+
+/* black square (small)
+&#x25A0;
+BLACK MEDIUM SQUARE &#x25FC;
+*/
+
+.dot { margin-top: 160px; margin-left: 65px;}
+.dot:after
+{
+content:"&#x2b24;";
+  content: "&#11044;";
+  content: "⬤";
+}
+/*
+http://www.w3schools.com/cssref/pr_gen_content.asp
+.dot::before { content: "Read this: "; }*/
+
+
+
+
+
+
+
+
+
 /*
 .btn {
   text-shadow: 1px 1px 3px #13e800;
@@ -146,50 +369,3 @@ purple: rgb(189, 86, 159);
 
 
 
-
-
-.piece { 
-  padding: 10px;
-  margin: 0px;
-  display: inline-block;
-  position: relative;
-}
-.board div, .piece div {
-  height: 30px;
-  width: 30px;
-  display: inline-block;
-  position: relative;
-  padding: 0px;
-  margin: -1.5px;
-  
-  border: 1px solid black;
-  background-color: #efefef;
-  text-align: center;
-  vertical-align: middle; /* ....... */
-}
-
-.board div {background-color: #eeccee;}
-
-/*
-Using a formula (an + b). Description: a represents a cycle size, n is a counter (starts at 0), and b is an offset value.
-EXAMPLE: specify a background color for all p elements whose index is a multiple of 3:  3n + 0
-.piece div:nth-child(5) {}
-*/
-.piece div:nth-child(6n-1) {
-    background: #dddded;
-}
-
-/* or div .filled? this is funky does NOT WORK WITH .piece div:nth-child 
-okay and JUST .filled wasnt working but couldnt tell for longest time*/
-div:nth-child(6n-1) .filled,
-div .filled {
-  background-color: teal;
-}
-
-/*
-http://jsfiddle.net/marcuswhybrow/YMN7U/5/
-li:nth-child(4) { clear: left; }
-
-http://jsfiddle.net/dWkdp/
-li:nth-child(3):after { content:"\A"; white-space:pre; }
-*/

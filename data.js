@@ -387,6 +387,7 @@ var round4 = [
 
 
 
+// OLD CODE NEED TO TURN PROTOTYPE ISH
 
 // 6 columns (abcdef) by 12 rows (1-12)
 function createBoard(roundNum) {

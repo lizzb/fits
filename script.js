@@ -64,8 +64,8 @@ Polyomino.prototype.draw = function() {
   // array of 25 indices, order to read the info
   var pieceLayout = orientations[this.orientationIdx];
   var defaultPieceInfo = this.structure;
-    //console.log(pieceLayout);
-    // console.log(defaultPieceInfo);
+  //console.log(pieceLayout);
+  // console.log(defaultPieceInfo);
   
   
   var pieceDiv = document.createElement("DIV");
@@ -293,7 +293,6 @@ Polyomino.prototype.flipHorizontal = function() {
 
 /*
 // ---------------------------------------------
-// STILL USING THIS, NOT YET ON PROTOTYPES
 
 var currentOrientationIndex = 0; //"N";
 //var currentOrientation = orientations[currentOrientationIndex]; 
