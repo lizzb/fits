@@ -1,18 +1,42 @@
+// polyonimos
+var pieceNames = [
+"i1", "i2", "i3", "i4", "i5", 
+"o4", "f5", "n5", "p5", 
+"v3", "v5", 
+"t4", "t5", 
+"z4", "z5", 
+"w5", "x5", "y5" ];
+
+/* var pieces = [
+i1, i2, "i3", "i4", "i5", "o4", "f5", "n5", "p5", 
+"v3", "v5", "t4", "t5", "z4", "z5", "w5", "x5", "y5" ];*/
+
+// o4, f5, p5, y5, x5, w5, n5, v3, v5, z4, z5, t4,t5, l4, l5, i4, i5, i1, i2, i3
+// n5, i5, i4, i3, i2, i1
+
+//var defaultOrientations = ["N", "E", "S", "W"];
+//var reflectedOrientations = ["rN", "rE", "rS", "rW"];
+
+var orientations = ["N", "E", "S", "W", "rN", "rE", "rS", "rW"];
+
+// can i do enums or something....???
+// var orientationLayout = [North, East, South, West, rNorth, rEast, rSouth, rWest];
+
+  
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+// for each piece
+//var currentOrientationIndex = 0; //"N";
+//var currentOrientation = orientations[currentOrientationIndex]; 
+//var currentPieceName = "v3";  
+
+
 // -----------------------------------------------------------
 // PIECES
 // The structures of all pieces in their default orientation
 // i.e. "North", no rotation
 // (note: variable name matches the appearance in this layout)
 // -----------------------------------------------------------
-
-// empty piece
-var none = [0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0];   
-
-            
   var i1 = [0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 
             0, 0, 1, 0, 0,
@@ -134,39 +158,6 @@ var emptyPiece = [0, 0, 0, 0, 0,
                   0, 0, 0, 0, 0,
                   0, 0, 0, 0, 0,
                   0, 0, 0, 0, 0]; 
-
-
-
-
-
-
-
-
-
-// polyonimos
-var pieceNames = [
-"i1", "i2", "i3", "i4", "i5", 
-"o4", "f5", "n5", "p5", 
-"v3", "v5", 
-"t4", "t5", 
-"z4", "z5", 
-"w5", "x5", "y5" ];
-
-/* var pieces = [
-i1, i2, "i3", "i4", "i5", "o4", "f5", "n5", "p5", 
-"v3", "v5", "t4", "t5", "z4", "z5", "w5", "x5", "y5" ];*/
-
-// o4, f5, p5, y5, x5, w5, n5, v3, v5, z4, z5, t4,t5, l4, l5, i4, i5, i1, i2, i3
-// n5, i5, i4, i3, i2, i1
-
-var orientations = ["N", "E", "S", "W", "rN", "rE", "rS", "rW"];
-
-// can i do enums or something....???  
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
-// for each piece
-
-
-
 
 
 

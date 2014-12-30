@@ -3,8 +3,10 @@
   <head>
     <title>Fits by lizzb</title>
 
+<!-- http://jsbin.com/josohe/4/edit?html,js,console,output -->
+
 <script src="data.js"></script>
-<script src="Pieces.js"></script>
+<script src="script.js"></script>
 <link rel="stylesheet" href="style.css">
 
 <script>
@@ -427,10 +429,14 @@ function flipHorizontal() {
 
 <h1 id="test"></h1>
 
-Hacky:
-<li id="currentPiece"></li>
-<li id="currentOrientationIndex"></li>
-<li id="currentOrientation"></li>
+<button onclick="makeAllPieces()"> Make all pieces </button>
+
+<br><br>
+
+Current Piece: <span id="currentPiece"></span>
+<br><br>
+<!--li id="currentOrientationIndex"></li>
+<li id="currentOrientation"></li-->
   
   
   <a class="button" onclick="rotateRight()"><strong>&#8635;</strong> Rotate Right CW </a>
@@ -442,55 +448,10 @@ Hacky:
 
 <section>
 
+
+
+
 <div id="game-pieces"></div>
-
-
-  
-
-  <br><br>
-  
-<!--button onclick="createDynamicPentomino('f5')"> Make dynamic f </button>
-<button onclick="createDynamicPentomino('p5')"> Make dynamic p </button>
-<button onclick="createDynamicPentomino('o4')"> Make dynamic o </button>
-  
-  <br><br-->  
-  
-  
-  <div id="dynamic-pentomino"></div>
-  
-  <hr>
-  
-  <h3> Create pentominos </h3>
-
-<button onclick="createPentomino('x5')"> Make x </button>
-<button onclick="createPentomino('y5')"> Make y </button>
-<button onclick="createPentomino('w5')"> Make w </button>
-<button onclick="createPentomino('f5')"> Make f </button>
-<button onclick="createPentomino('p5')"> Make p </button>
-<button onclick="createPentomino('o4')"> Make o </button>
-
-<button onclick="createPentomino('v3')"> Make v3 </button>
-<button onclick="createPentomino('v5')"> Make v5 </button>
-<button onclick="createPentomino('l4')"> Make l4 </button>
-<button onclick="createPentomino('l5')"> Make l5 </button>
-<button onclick="createPentomino('z4')"> Make z4 </button>
-<button onclick="createPentomino('z5')"> Make z5 </button>  
-<button onclick="createPentomino('t4')"> Make t4 </button>
-<button onclick="createPentomino('t5')"> Make t5 </button>
-
-  
-  <br><br>
-  
-<div id="pentomino"></div>
-  
-
-  <hr>
-
-  <button onclick="createBoard(1)"> Round 1 board </button>
-  <button onclick="createBoard(2)"> Round 2 board </button>
-  <button onclick="createBoard(3)"> Round 3 board </button>
-  <button onclick="createBoard(4)"> Round 4 board </button>
-  
 
 <div id="boards"></div>
 
@@ -498,41 +459,6 @@ Hacky:
 
 
 
-		
-
-<!--&#9633;
-  &#11036;
-
-  <pre>
-  []  
-  []  
-  []  
-</pre>
-  
-<pre>
-[][]  
-  []  
-  [][]
-</pre>
-  
-<pre>
-[][][]  
-  []  
-  []  
-</pre>
-  
-<pre>   
-[][][]
-  []  
-</pre>
-  
-<pre>   
-[][]  
-  [][]  
-</pre
-↻ Rotate Right CW ↷ &#8631;
-↺ Rotate Left CCW ↶ &#8630; anticlockwise Top Semicircle Arrow looks good universalia
--->
     
   </body>
 </html>
