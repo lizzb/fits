@@ -14,14 +14,10 @@
 
 window.addEventListener('load', function(e) {
   document.querySelector('#test').innerHTML = 'fitris';
-
 /*
 var pieces = document.querySelector('#game-pieces');
 pieces.innerHTML += "";
 */
-
-
-
 });
 
 // for each piece
@@ -49,19 +45,16 @@ function makeAllBoards(){
   
   var boardObjects = [];
   
-  for(var i=0; i<boards.length; i++) {
+  // ignore board 0 for now...............********
+  for(var i=1; i<boards.length; i++) {
     boardObjects[i] = new Board(i, boards[i]);
-
-//(1, board1);
-//(2, board2);
-//(3, board3);
-//(4, board4);
-    
+    boardObjects[i].draw();
+//(1, board1); (2, board2); (3, board3); (4, board4); 
   }
  
-  for(var j=0; j<boardObjects.length; j++) {
-    boardObjects[j].draw();
-  }
+ // for(var j=0; j<boardObjects.length; j++) {
+ //   boardObjects[j].draw();
+ // }
    
 }
 
@@ -78,7 +71,7 @@ function makeAllBoards(){
 
 
 
-<div id="polyominos"></div>
+
 
 <!-- 
 
@@ -154,8 +147,8 @@ Dog.prototype.bark = function(){
 
 <h1 id="test"></h1>
 
-<button onclick="makeAllPieces()"> Make all pieces </button>
-<button onclick="makeAllBoards()"> Make all pieces </button>
+<button onclick="makeAllPieces()"> Draw all pieces </button>
+<button onclick="makeAllBoards()"> Draw all boards </button>
 <br><br>
 
 Current Piece: <span id="currentPiece"></span>
@@ -173,7 +166,7 @@ Current Piece: <span id="currentPiece"></span>
 
 <section>
 
-
+<div id="polyominos"></div>
 
 
 <div id="game-pieces"></div>
