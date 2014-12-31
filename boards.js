@@ -87,14 +87,14 @@ Board.prototype.draw = function() {
         case plus2: displayIcon = "(2)"; break;
         case plus3: displayIcon = "(3)"; break;
         case minus5: displayIcon = "(-5)"; break;
-        case symb1: displayIcon = "&#x2736;"; break; // blue 6pt star
-        case symb2: displayIcon = "&#x25B2;"; break; // orange triangle
-        case symb3: displayIcon = "&#x2b24;"; break; // pink circle
-        case symb4: displayIcon = "&#x2b25;"; break; // green diamond
-        case symb5: displayIcon = "&#x2716;"; break; // purple X
+        case symb1: slot.className = "star-symbol"; break; //displayIcon = "&#x2736;"; break; // blue 6pt star
+        case symb2: slot.className = "triangle-symbol"; break; //displayIcon = "&#x25B2;"; break; // orange triangle
+        case symb3: slot.className = "circle-symbol"; break; //displayIcon = "&#x2b24;"; break; // pink circle
+        case symb4: slot.className = "diamond-symbol"; break; //displayIcon = "&#x2b25;"; break; // green diamond
+        case symb5: slot.className = "close-symbol"; break; //displayIcon = "&#x2716;"; break; // purple X
         default: displayIcon = ""; break; // displayIcon = "O"; break;
       }
-      //slot.appendChild(document.createTextNode(displayIcon));
+      slot.appendChild(document.createTextNode(displayIcon));
 
     //if(defaultPieceInfo[pieceLayout[i]])
     //  unit.className = "filled";

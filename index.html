@@ -59,6 +59,12 @@ function makeAllBoards(){
    
 }
 
+function makeBoard4(){
+  
+  var boardObj = new Board(4, boards[4], colors[4]);
+  boardObj.draw();
+}
+
 
 
 </script>
@@ -150,6 +156,8 @@ Dog.prototype.bark = function(){
 
 <button onclick="makeAllPieces()"> Draw all pieces </button>
 <button onclick="makeAllBoards()"> Draw all boards </button>
+
+<button onclick="makeBoard4()"> Make Board 4 </button>
 <br><br>
 
 Current Piece: <span id="currentPiece"></span>
@@ -168,7 +176,6 @@ Current Piece: <span id="currentPiece"></span>
 <section>
 
 <div id="polyominos"></div>
-
 
 <div id="game-pieces"></div>
 
