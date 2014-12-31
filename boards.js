@@ -42,7 +42,7 @@ switch (roundNum) {
 // Board prototype
 //
 // -----------------------------------------------------------
-function Board(roundNumber, layout) {
+function Board(roundNumber, layout, color) {
   this.roundNum = roundNumber;
 
   // could simplify further to access the index of boards[roundnum]
@@ -50,6 +50,8 @@ function Board(roundNumber, layout) {
 
   // 6 column x 12 row grid of board squares (72 slots)
   this.layout = layout;
+
+  this.colorName = color;
   
   //for(var i = 0; i<this.structure.length; i++) {
   //  if(this.structure[i]) this.numUnits++;
@@ -69,7 +71,7 @@ Board.prototype.draw = function() {
   var colLabels = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
  
   var boardDiv = document.createElement("DIV");
-  boardDiv.className = "board";
+  boardDiv.className = "board " + this.colorName;
   boardDiv.id = "board"+this.roundNum;
   
   // layout.length = 6 * 12 = 72
@@ -80,7 +82,7 @@ Board.prototype.draw = function() {
 
     var displayIcon = "";
       switch (this.layout[i]) {
-        case dot: displayIcon = "."; break;
+        case dot: slot.className = "dot"; break;//displayIcon = "."; break;
         case plus1: displayIcon = "(1)"; break;
         case plus2: displayIcon = "(2)"; break;
         case plus3: displayIcon = "(3)"; break;
@@ -92,7 +94,7 @@ Board.prototype.draw = function() {
         case symb5: displayIcon = "&#x2716;"; break; // purple X
         default: displayIcon = ""; break; // displayIcon = "O"; break;
       }
-      slot.appendChild(document.createTextNode(displayIcon));
+      //slot.appendChild(document.createTextNode(displayIcon));
 
     //if(defaultPieceInfo[pieceLayout[i]])
     //  unit.className = "filled";

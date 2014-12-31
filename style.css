@@ -78,7 +78,10 @@ http://codepen.io/lizz/pen/ByQBpY?editors=110
 
 /** { box-sizing: border-box; }*/
 
-.red, .yellow, .green, .blue {
+.board .red,
+.board .yellow,
+.board .green,
+.board .blue {
   height: 350px;
   width: 150px;
   background-color: lightgrey;
@@ -96,7 +99,7 @@ outer = rgb(255,85,97);
   gradient inwards to rgb(255,171,134); or 255, 154, 138? 
   more like 255, 177, 162
 */
-.red {
+.board .red {
   background-image:
     radial-gradient(
       rgb(255, 177, 162),
@@ -104,15 +107,15 @@ outer = rgb(255,85,97);
     );
 }
 
-.yellow {
+/*.board .yellow {
   background-image:
     radial-gradient(
       yellow, /*inner*/
-      #f06d06 /*outer*/
+      #f06d06 /*outer*
     );
-}
+}*/
 
-.yellow {
+.board .yellow {
   background-image:
     radial-gradient(
       rgb(248,224,120),
@@ -120,7 +123,7 @@ outer = rgb(255,85,97);
     );
 }
 
-.green {
+.board .green {
   background-image:
     radial-gradient(
       rgb(90,197,140), 
@@ -128,7 +131,7 @@ outer = rgb(255,85,97);
     );
 }
 
-.blue {
+.board .blue {
   background-image:
     radial-gradient(
       rgb(7,190,236),
@@ -138,56 +141,65 @@ outer = rgb(255,85,97);
 }
 
 
-.red > .dot { color: rgb(255,82,69);  }
-.red > .piece { 
+.board .red > .dot { color: rgb(255,82,69);  }
+.board .red > .piece { 
   background-color: rgb(247, 0, 0);
 }
 
-.yellow > .dot { color: rgb(254, 201, 57); }
-.yellow > .piece { 
+.board .yellow > .dot { color: rgb(254, 201, 57); }
+.board .yellow > .piece { 
   background-color: rgb(255,157,0);
 }
 
-.green > .dot { color: rgb(0, 164, 94); }
+.board .green > .dot { color: rgb(0, 164, 94); }
 
-.green > .piece {
+.board .green > .piece {
   background-color: rgb(0, 148, 90);
 }
 
-.blue > .dot { 
+.board .blue > .dot { 
   color: rgb(1, 136, 199);
   /* 0, 133, 202*/
 }
 
-.blue > .piece {
+.board .blue > .piece {
   background-color: rgb(0, 127, 212);
   /* 0 127 212, or 2, 124, 220 */
 }
 
-.star-symbol {
+.board > .star-symbol {
   /*blue: 11, 191, 255
   blue: 37,193, 255*/
   color: rgb(11, 191, 255);
 }
 
-.triangle-symbol {
+
+/* ----- Orange: Triangle ----- */
+
+.board > .triangle-symbol {
   /*orange: 255, 131, 19
   orange: 255, 139, 35 */
   color: rgb(255, 131, 19);
 }
 
-.circle-symbol {
+.board > .triangle-symbol:after {
+/*BLACK UP-POINTING TRIANGLE &#x25B2; */
+  content:"&#x25B2;";
+}
+
+
+.board > .circle-symbol {
   /*pink: 255, 104, 168
   pink: 255, 113, 166*/
   color: rgb(255, 104, 168);
 }
 
-.diamond-symbol {
+.board > .diamond-symbol {
   /*lime: 132, 186, 41);*/
   color: rgb(132, 186, 41);
 }
 
-.close-symbol {
+.board > .close-symbol {
   /*purple: 189, 86, 159*/
   color: rgb(189, 86, 159);
 }
@@ -195,27 +207,24 @@ outer = rgb(255,85,97);
 
   /*bright blue -  SIX POINTED BLACK STAR &#x2736;*/
 
-.star-symbol:after {
+.board > .star-symbol:after {
   content: "&#x2736;"
 }
 
-.triangle-symbol:after {
-/*BLACK UP-POINTING TRIANGLE &#x25B2; */
-  content:"&#x25B2;";
-}
+
 
 /*BLACK MEDIUM DIAMOND &#x2b25; */
 /* BLACK DIAMOND &#x25C6; (small)*/
-.diamond-symbol:after {
+.board > .diamond-symbol:after {
   content:"&#x2b25;";
 }
 
-.close-symbol:after{
+.board > .close-symbol:after{
 /*HEAVY MULTIPLICATION X &#x2716;*/
   content:"&#x2716;";
 }
 
-.circle-symbol:after{
+.board > .circle-symbol:after{
   content: "O";
 }
 
@@ -224,10 +233,9 @@ outer = rgb(255,85,97);
 BLACK MEDIUM SQUARE &#x25FC;
 */
 
-.dot { margin-top: 160px; margin-left: 65px;}
-.dot:after
-{
-content:"&#x2b24;";
+/*.dot { margin-top: 160px; margin-left: 65px;}*/
+.dot:after {
+  content:"&#x2b24;";
   content: "&#11044;";
   content: "⬤";
 }
@@ -325,7 +333,7 @@ piece: 0 127 212, or 2, 124, 220
 /* ========== Round 4 SYMBOLS ========== */
 
 
-/* ----- Orange: Triangle ----- */
+
 
 /*
 orange -  BLACK UP-POINTING TRIANGLE &#x25B2; 

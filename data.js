@@ -1,3 +1,6 @@
+// Possible player colors
+var colors = ["none", "red", "yellow", "green", "blue"];
+
 // -----------------------------------------------------------
 // PIECES
 // The structures of all pieces in their default orientation
