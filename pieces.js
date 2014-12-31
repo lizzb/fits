@@ -28,7 +28,11 @@ var pieceNames = [
 */
 
 
-
+// -----------------------------------------------------------
+//
+// Polyomino = piece
+//
+// -----------------------------------------------------------
 function Polyomino(name, structure) {
   this.name = name;
 
@@ -42,10 +46,7 @@ function Polyomino(name, structure) {
 
   //this.orientation = North;
   this.orientationIdx = 0; // north
-  
-  //this.numUnits = 0; //.......
-  
-  
+
   
   this.isPlaced = false; //.... shoudl be placement/loctaion
   this.numUnits = 0; // need to count from structure
@@ -57,8 +58,11 @@ function Polyomino(name, structure) {
 }
 
 
-var rowLabels = ['a', 'b', 'c', 'd', 'e'];
-
+// -----------------------------------------------------------
+//
+// Create new polyomino div with id matching its name
+//
+// -----------------------------------------------------------
 Polyomino.prototype.draw = function() {
   
   // array of 25 indices, order to read the info
@@ -66,7 +70,6 @@ Polyomino.prototype.draw = function() {
   var defaultPieceInfo = this.structure;
   //console.log(pieceLayout);
   // console.log(defaultPieceInfo);
-  
   
   var pieceDiv = document.createElement("DIV");
   pieceDiv.className = "piece";
@@ -86,12 +89,17 @@ Polyomino.prototype.draw = function() {
   
   pieceDiv.appendChild(document.createElement("BR"));
 
-//   document.getElementById("game-pieces").appendChild(pieceDiv);
-    document.getElementById("polyominos").appendChild(pieceDiv); 
+//document.getElementById("game-pieces").appendChild(pieceDiv);
+  document.getElementById("polyominos").appendChild(pieceDiv); 
+
 };
 
 
-
+// -----------------------------------------------------------
+//
+// Redraw polyomino - replace current div contents
+//
+// -----------------------------------------------------------
 Polyomino.prototype.redraw = function() {
   
   // array of 25 indices, order to read the info
@@ -116,7 +124,17 @@ pieceDiv.className = "piece";
 };
 
 
+ // var a = A.parentNode.replaceChild(document.createElement("span"), A);
+// a is the replaced A element.
+  /*
+  var exP, newP; 
+newP = document.createElement("p"); 
+newP.id = 'new'; exP = document.getElementById('bf'); 
+exP.parentNode .replaceChild(newP,exP); 
+*/
 
+  //var oldDrawing = document.getElementById("dynamic-pentomino");
+  //oldDrawing.parentNode.replaceChild(pentDiv, oldDrawing);
 
 
 
@@ -133,6 +151,9 @@ Polyomino.prototype.printStructure = function() {
   return prettyStructureStr;
 };*/
 
+// -----------------------------------------------------------
+// Output polyomino info to console for debugging
+// -----------------------------------------------------------
 Polyomino.prototype.print = function() {
   
   var pieceInfo = "Name: " + this.name + "\n" +
@@ -146,7 +167,7 @@ Polyomino.prototype.print = function() {
     if(this.structure[i]) pieceInfo += 'X';
     else pieceInfo += '.';
   }
-      //"Default Structure: " + this.printStructure();
+      
   /*
    return "Name: " + this.name + "\n Num Units: "+this.numUnits+ "\n Current Orientation: " + orientations[this.orientationIdx] + "\n Currently Placed?: " + this.isPlaced + "\n Default Structure: " + this.structure;
    */
@@ -160,17 +181,7 @@ Polyomino.prototype.print = function() {
 
 
 
- // var a = A.parentNode.replaceChild(document.createElement("span"), A);
-// a is the replaced A element.
-  /*
-  var exP, newP; 
-newP = document.createElement("p"); 
-newP.id = 'new'; exP = document.getElementById('bf'); 
-exP.parentNode .replaceChild(newP,exP); 
-*/
 
-  //var oldDrawing = document.getElementById("dynamic-pentomino");
-  //oldDrawing.parentNode.replaceChild(pentDiv, oldDrawing);
 
 
 // -----------------------------------------------------------
