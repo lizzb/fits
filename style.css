@@ -21,7 +21,9 @@ body {font-family: Helvetica, sans-serif;}
 }
 
 
-.piece { 
+.piece,
+.board 
+ { 
   padding: 10px;
   margin: 0px;
   display: inline-block;
@@ -38,14 +40,12 @@ body {font-family: Helvetica, sans-serif;}
   margin: -1.5px;
   
   border: 1px solid black;
-  background-color: #efefef;
+  /*background-color: #efefef;*/
   text-align: center;
   vertical-align: middle; /* ....... */
 }
 
-.board div {
-  background-color: #eeccee;
-}
+
 
 /*
 Using a formula (an + b). Description: a represents a cycle size, n is a counter (starts at 0), and b is an offset value.
@@ -63,6 +63,17 @@ div .filled {
   background-color: teal;
 }
 
+.board > div {
+  /*background-color: #eeccee;
+  display: inline-block;
+  position: relative;*/
+  padding: 0;
+  margin: 0;
+  border: 1pt solid #ccc;
+  color: #333;
+  vertical-align: center; /* why isnt this working?? */
+}
+
 /*
 http://jsfiddle.net/marcuswhybrow/YMN7U/5/
 li:nth-child(4) { clear: left; }
@@ -70,7 +81,11 @@ li:nth-child(4) { clear: left; }
 http://jsfiddle.net/dWkdp/
 li:nth-child(3):after { content:"\A"; white-space:pre; }
 */
-
+/*
+.board:before {
+  content: "Round<br>";
+}
+*/
 
 /*
 http://codepen.io/lizz/pen/ByQBpY?editors=110
@@ -84,10 +99,9 @@ http://codepen.io/lizz/pen/ByQBpY?editors=110
 .board .blue {
   height: 350px;
   width: 150px;
-  background-color: lightgrey;
+  /*background-color: lightgrey;
   position: relative;
-  display: inline-block;
-  
+  display: inline-block;*/
 }
 
 /*div .piece {display: block; height: 25px; width: 25px;}*/
@@ -99,7 +113,8 @@ outer = rgb(255,85,97);
   gradient inwards to rgb(255,171,134); or 255, 154, 138? 
   more like 255, 177, 162
 */
-.board .red {
+/* for whatever reason having .board .red doesnt work */
+.red {
   background-image:
     radial-gradient(
       rgb(255, 177, 162),
@@ -111,11 +126,11 @@ outer = rgb(255,85,97);
   background-image:
     radial-gradient(
       yellow, /*inner*/
-      #f06d06 /*outer*
+    /*  #f06d06 outer*
     );
 }*/
 
-.board .yellow {
+.yellow {
   background-image:
     radial-gradient(
       rgb(248,224,120),
@@ -123,7 +138,7 @@ outer = rgb(255,85,97);
     );
 }
 
-.board .green {
+.green {
   background-image:
     radial-gradient(
       rgb(90,197,140), 
@@ -131,7 +146,7 @@ outer = rgb(255,85,97);
     );
 }
 
-.board .blue {
+.blue {
   background-image:
     radial-gradient(
       rgb(7,190,236),
@@ -141,31 +156,41 @@ outer = rgb(255,85,97);
 }
 
 
-.board .red > .dot { color: rgb(255,82,69);  }
-.board .red > .piece { 
-  background-color: rgb(247, 0, 0);
-}
+.red > .dot { color: rgb(255,82,69);  }
+.red > .piece { background-color: rgb(247, 0, 0); }
 
-.board .yellow > .dot { color: rgb(254, 201, 57); }
-.board .yellow > .piece { 
-  background-color: rgb(255,157,0);
-}
+.yellow > .dot { color: rgb(254, 201, 57); }
+.yellow > .piece { background-color: rgb(255,157,0); }
 
-.board .green > .dot { color: rgb(0, 164, 94); }
+.green > .dot { color: rgb(0, 164, 94); }
+.green > .piece { background-color: rgb(0, 148, 90); }
 
-.board .green > .piece {
-  background-color: rgb(0, 148, 90);
-}
-
-.board .blue > .dot { 
+.blue > .dot { 
   color: rgb(1, 136, 199);
   /* 0, 133, 202*/
 }
 
-.board .blue > .piece {
+.blue > .piece {
   background-color: rgb(0, 127, 212);
   /* 0 127 212, or 2, 124, 220 */
 }
+
+/* ----- Orange: Triangle ----- */
+
+.board > .triangle-symbol {
+  /*orange: 255, 131, 19
+  orange: 255, 139, 35 */
+  color: rgb(255, 131, 19);
+  /* content here wont work */
+  
+}
+
+.board > .triangle-symbol:after {
+/*BLACK UP-POINTING TRIANGLE &#x25B2; */
+content:"&#x25B2;";
+  content: "▲";
+}
+
 
 .board > .star-symbol {
   /*blue: 11, 191, 255
@@ -174,18 +199,12 @@ outer = rgb(255,85,97);
 }
 
 
-/* ----- Orange: Triangle ----- */
+/*
 
-.board > .triangle-symbol {
-  /*orange: 255, 131, 19
-  orange: 255, 139, 35 */
-  color: rgb(255, 131, 19);
-}
+   */
 
-.board > .triangle-symbol:after {
-/*BLACK UP-POINTING TRIANGLE &#x25B2; */
-  content:"&#x25B2;";
-}
+
+
 
 
 .board > .circle-symbol {
@@ -208,7 +227,8 @@ outer = rgb(255,85,97);
   /*bright blue -  SIX POINTED BLACK STAR &#x2736;*/
 
 .board > .star-symbol:after {
-  content: "&#x2736;"
+  content: "&#x2736;";
+  content: "✶";
 }
 
 
@@ -217,15 +237,26 @@ outer = rgb(255,85,97);
 /* BLACK DIAMOND &#x25C6; (small)*/
 .board > .diamond-symbol:after {
   content:"&#x2b25;";
+  content: "⬥";
 }
 
 .board > .close-symbol:after{
 /*HEAVY MULTIPLICATION X &#x2716;*/
   content:"&#x2716;";
+  /*content:"\u2716;";
+  ----content: "0xE2";
+  content: "&times;"; different s ymbol than 2716*/
+  content: "✖";
+
 }
 
 .board > .circle-symbol:after{
-  content: "O";
+  /* MEDIUM BLACK CIRCLE &#x26ab; */
+  content: "";
+
+  /* black circle u + 25cf...&#x25cf; &#9679; 0x25cF */
+  content: "●";
+
 }
 
 /* black square (small)
@@ -234,7 +265,7 @@ BLACK MEDIUM SQUARE &#x25FC;
 */
 
 /*.dot { margin-top: 160px; margin-left: 65px;}*/
-.dot:after {
+.dot:after { /* black large circle */
   content:"&#x2b24;";
   content: "&#11044;";
   content: "⬤";
@@ -246,7 +277,17 @@ http://www.w3schools.com/cssref/pr_gen_content.asp
 
 
 
-
+.triangle-symbol:after,
+.star-symbol:after,
+.diamond-symbol:after,
+.circle-symbol:after,
+.close-symbol:after {
+  background: white;
+  padding: 2px;
+  margin-top:5px;
+  /*text-align: center;*/
+  vertical-align: middle;  /* middle? not working */
+}
 
 
 
