@@ -75,8 +75,8 @@ Board.prototype.draw = function() {
   // layout.length = 6 * 12 = 72
   for (var i=0; i<this.layout.length; i++) { 
     var slot = document.createElement("DIV");
-    slot.id = colLabels[i%6] + "r" + Math.floor(i/6 + 1);
-    slot.appendChild(document.createTextNode(slot.id)); //...........
+    //slot.id = colLabels[i%6] + "r" + (72 - Math.floor(i/12 + 1));
+    //slot.appendChild(document.createTextNode(slot.id)); //...........
 
     var displayIcon = "";
       switch (this.layout[i]) {
