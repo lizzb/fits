@@ -1,5 +1,6 @@
 
 body {font-family: Helvetica, sans-serif;}
+
 .button {
   color: #ffffff;
   font-size: 12px;
@@ -14,9 +15,10 @@ body {font-family: Helvetica, sans-serif;}
   text-decoration: none;
 }
 
-.button strong {font-size: 24px; vertical-align: middle;}
-
-
+.button strong {
+  font-size: 24px; 
+  vertical-align: middle;
+}
 
 
 .piece { 
@@ -25,7 +27,9 @@ body {font-family: Helvetica, sans-serif;}
   display: inline-block;
   position: relative;
 }
-.board div, .piece div {
+
+.board div,
+.piece div {
   height: 30px;
   width: 30px;
   display: inline-block;
@@ -39,7 +43,9 @@ body {font-family: Helvetica, sans-serif;}
   vertical-align: middle; /* ....... */
 }
 
-.board div {background-color: #eeccee;}
+.board div {
+  background-color: #eeccee;
+}
 
 /*
 Using a formula (an + b). Description: a represents a cycle size, n is a counter (starts at 0), and b is an offset value.
@@ -81,7 +87,7 @@ http://codepen.io/lizz/pen/ByQBpY?editors=110
   
 }
 
-div .piece {display: block; height: 25px; width: 25px;}
+/*div .piece {display: block; height: 25px; width: 25px;}*/
 
 /*span {display: block; width: 100px;}*/
 
@@ -169,8 +175,6 @@ outer = rgb(255,85,97);
   orange: 255, 139, 35 */
   color: rgb(255, 131, 19);
 }
-
-
 
 .circle-symbol {
   /*pink: 255, 104, 168
