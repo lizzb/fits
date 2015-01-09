@@ -14,6 +14,35 @@ var orientationNames = ["N", "E", "S", "W", "rN", "rE", "rS", "rW"];
   var rowLabels = ['a', 'b', 'c', 'd', 'e'];
 
 
+// HACKY HACKY HAKCY
+
+/*
+var activePieceID = '';
+
+
+function selectPiece(pieceID) {
+  if(activePieceID != '') {
+    if (activePieceID != pieceID) {
+      document.getElementById(activePieceID).className = '';
+      activePieceID = pieceID;
+      document.getElementById(activePieceID).className = 'active';
+    }
+    else {
+      document.getElementById(activePieceID).className = '';
+      activePieceID = '';
+    }
+  }
+  else
+  {
+    activePieceID = pieceID;
+    document.getElementById(pieceID).className = 'active';
+  }
+  console.log('test');
+  document.getElementById('currentPiece').innerHTML = activePieceID;
+}
+*/
+
+
 // can i do enums or something....???  
 
 /*
@@ -74,6 +103,7 @@ Polyomino.prototype.draw = function() {
   var pieceDiv = document.createElement("DIV");
   pieceDiv.className = "piece";
   pieceDiv.id = this.name;
+  //pieceDiv.onclick = selectPiece(this.name); // this.id?
   
   for (var i=0; i<25; i++) { 
     var unit = document.createElement("DIV");
@@ -89,6 +119,7 @@ Polyomino.prototype.draw = function() {
   
   pieceDiv.appendChild(document.createElement("BR"));
 
+  //pieceDiv.onclick = selectPiece(this.name);
 //document.getElementById("game-pieces").appendChild(pieceDiv);
   document.getElementById("polyominos").appendChild(pieceDiv); 
 

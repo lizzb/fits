@@ -11,6 +11,12 @@
 <script src="boards.js"></script>
 <link rel="stylesheet" href="style.css">
 
+<style>
+.active > .filled {
+  border: 2px solid red;
+}
+</style>
+
 <script>
 
 window.addEventListener('load', function(e) {
@@ -23,6 +29,56 @@ pieces.innerHTML += "";
 
 // for each piece
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+/*
+var activePieceID = '';
+
+
+function selectPiece(pieceID) {
+  if(activePieceID != '') {
+    if (activePieceID != pieceID) {
+      document.getElementById(activePieceID).className = '';
+      activePieceID = pieceID;
+      document.getElementById(activePieceID).className = 'active';
+    }
+    else {
+      document.getElementById(activePieceID).className = '';
+      activePieceID = '';
+    }
+  }
+  else
+  {
+    activePieceID = pieceID;
+    document.getElementById(pieceID).className = 'active';
+  }
+  console.log('test');
+  document.getElementById('currentPiece').innerHTML = activePieceID;
+}*/
+
+
+var activePieceID = '';
+
+/*
+function selectPiece(pieceID) {
+  if(pieceID) {
+    if (activePieceID != pieceID) {
+      document.getElementById(activePieceID).className = '';
+      activePieceID = pieceID;
+      document.getElementById(activePieceID).className = 'active';
+    }
+    else {
+      document.getElementById(activePieceID).className = '';
+      activePieceID = '';
+    }
+  }
+}*/
+
+function selectPieceDiv(pieceID) {
+  if(pieceID && document.getElementById(pieceID)) {
+
+    document.getElementById(pieceID).className = "active";
+    document.getElementById("currentPiece").innerHTML = pieceID;
+  }
+}
 
 function makeAllPieces(){
   
@@ -33,12 +89,13 @@ function makeAllPieces(){
     //var piece = document.createElement("DIV");
      // piece.id = pieceNames[i];
     //document.getElementById("polyominos").appendChild(piece);
-    
   }
  
   for(var j=0; j<pieceObjects.length; j++) {
     pieceObjects[j].draw();
   }
+
+  // http://toddmotto.com/attaching-event-handlers-to-dynamically-created-javascript-elements/
    
 }
 
@@ -64,6 +121,43 @@ function makeBoard4(){
   var boardObj = new Board(4, boards[4], colors[4]);
   boardObj.draw();
 }
+
+
+/*
+<!DOCTYPE html>
+<html>
+
+<style>
+
+
+.active {background-color: blue;}
+
+div {height: 60px; width: 60px; display: inline-block; border: 1px solid black; background-color: white;}
+
+</style>
+<body>
+
+
+<div id="demo1" onclick="makeActive(this.id)"></div>
+<div id="demo2" onclick="makeActive(this.id)"></div>
+
+<p>A function is triggered when the button is clicked. The function outputs some text in a p element with id="demo".</p>
+
+<script>
+var activeDivID = '';
+
+function makeActive(divId) {
+
+//document.getElementById(divId).removeClass('active');
+    document.getElementById(divId).className='active';
+if(activeDivID)  document.getElementById(activeDivID).className='';
+activeDivID = divId;
+}*/
+</script>
+
+</body>
+</html>
+
 
 
 
