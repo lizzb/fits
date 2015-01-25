@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+
+
+.active {background-color: blue;}
+
+div {height: 60px; width: 60px; display: inline-block; border: 1px solid black; background-color: white;}
+
+</style>
+<body>
+
+
+<div id="demo1" onclick="makeActive(this.id)"></div>
+<div id="demo2" onclick="makeActive(this.id)"></div>
+
+<p>A function is triggered when the button is clicked. The function outputs some text in a p element with id="demo".</p>
+
+<script>
+var activeDivID = '';
+
+function makeActive(divId) {
+
+//document.getElementById(divId).removeClass('active');
+    document.getElementById(divId).className='active';
+if(activeDivID)  document.getElementById(activeDivID).className='';
+activeDivID = divId;
+}
+</script>
+
+</body>
+</html>
